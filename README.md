@@ -1,5 +1,7 @@
 # PCL2-CE-web
 
-https://fishcpy.github.io/PCL2-CE-web/
+github-pages: https://fishcpy.github.io/PCL2-CE-web/
 
-https://pcl2ce.us.kg/
+cloudflare CDN: https://pcl2ce.us.kg/
+
+vercel: https://pcl2ce.fishcpy.top/
