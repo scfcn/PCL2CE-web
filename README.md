@@ -8,7 +8,7 @@
 </div>
 
 # 预览
-github-pages: https://fishcpy.github.io/PCL2-CE-web/ （部署可能不及时）<br>
+github-pages: https://github.pcl2ce.us.kg/ （部署可能不及时）<br>
 cloudflare CDN: https://pcl2ce.us.kg/<br>
 vercel: https://vercel.pcl2ce.us.kg/<br>
 netlify: https://netlify.pcl2ce.us.kg/<br>
