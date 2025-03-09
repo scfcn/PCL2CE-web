@@ -15,4 +15,4 @@ netlify: https://netlify.pcl2ce.us.kg/<br>
 
 # 关于下载
 
-#### 下载使用download.pcl2ce.us.kg代理github下载链接，来应对github在在国内班墙的状态（必须进行人机验证）（代理下载链接仅简体中文下载页面有）
+#### 下载使用download.pcl2ce.us.kg代理github下载链接，来应对github在在国内半墙的状态（必须进行人机验证）（代理下载链接仅简体中文下载页面有）

@@ -12,3 +12,7 @@ github-pages: https://fishcpy.github.io/PCL2-CE-web/ (Deployment may be delayed)
 cloudflare CDN: https://pcl2ce.us.kg/<br>
 vercel: https://vercel.pcl2ce.us.kg/<br>
 netlify: https://netlify.pcl2ce.us.kg/<br>
+
+# About download
+
+#### download Use download.pcl2ce.us.kg proxy github download link, to deal with github in the domestic half wall status (must be verified by human machine) (proxy download link only simplified Chinese download page has)
