@@ -123,7 +123,10 @@ header {
     box-shadow: var(--shadow-lg);
     transition: transform 0.4s ease;
 }
-
+#bili-video {
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
 #video-container:hover {
     transform: perspective(1000px) rotateX(1deg) rotateY(-1deg);
 }
