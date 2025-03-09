@@ -12,6 +12,7 @@ github-pages: https://fishcpy.github.io/PCL2-CE-web/ (Deployment may be delayed)
 cloudflare CDN: https://pcl2ce.us.kg/<br>
 vercel: https://vercel.pcl2ce.us.kg/<br>
 netlify: https://netlify.pcl2ce.us.kg/<br>
+zeabur: https://zeabur.pcl2ce.us.kg/<br>
 
 # About download
 
