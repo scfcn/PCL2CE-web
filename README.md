@@ -12,3 +12,7 @@ github-pages: https://fishcpy.github.io/PCL2-CE-web/ （部署可能不及时）
 cloudflare CDN: https://pcl2ce.us.kg/<br>
 vercel: https://vercel.pcl2ce.us.kg/<br>
 netlify: https://netlify.pcl2ce.us.kg/<br>
+
+# 关于下载
+
+#### 下载使用download.pcl2ce.us.kg代理github下载链接，来应对github在在国内班墙的状态（必须进行人机验证）（代理下载链接仅简体中文下载页面有）
