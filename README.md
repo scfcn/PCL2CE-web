@@ -12,7 +12,7 @@ github-pages: https://github.pcl2ce.us.kg/ （部署可能不及时）<br>
 cloudflare CDN: https://pcl2ce.us.kg/<br>
 vercel: https://vercel.pcl2ce.us.kg/<br>
 netlify: https://netlify.pcl2ce.us.kg/<br>
-zeabur: https://zeabur.pcl2ce.us.kg/<br>
+zeabur: https://zeabur.pcl2ce.us.kg/ (已删除，总是自动暂停服务)<br>
 
 # 关于下载
 
