@@ -11,9 +11,9 @@ English / [简体中文](./README_EN.md)
 Hong Kong CDN：www.pcl2ce.dpdns.org(Recommended for mainland users)<br>
 github-pages: https://github.pcl2ce.dpdns.org/ (Deployment may be delayed)<br>
 cloudflare CDN: https://cf.pcl2ce.dpdns.org/<br>
-~~vercel: https://vercel.pcl2ce.dpdns.org/~~(Unable to recognize dpdns.org correctly)<br>
-~~netlify: https://netlify.pcl2ce.dpdns.org/~~(Unable to recognize dpdns.org correctly)<br>
-~~zeabur: https://zeabur.pcl2ce.dpdns.org/~~(Deleted, always auto-suspended)<br>
+~~vercel: https://vercel.pcl2ce.dpdns.org/~~ (Unable to recognize dpdns.org correctly)<br>
+~~netlify: https://netlify.pcl2ce.dpdns.org/~~ (Unable to recognize dpdns.org correctly)<br>
+~~zeabur: https://zeabur.pcl2ce.dpdns.org/~~ (Deleted, always auto-suspended)<br>
 
 # About download
 
