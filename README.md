@@ -13,7 +13,7 @@ github-pages: https://github.pcl2ce.dpdns.org/ （部署可能不及时）<br>
 cloudflare CDN: https://cf.pcl2ce.dpdns.org/<br>
 ~~vercel: https://vercel.pcl2ce.dpdns.org/~~ (无法正确识别dpdns.org)<br>
 ~~netlify: https://netlify.pcl2ce.dpdns.org/~~ (无法正确识别dpdns.org)<br>
-~~zeabur: https://zeabur.pcl2ce.dpdns.org/ ~~ (已删除，总是自动暂停服务)<br>
+~~zeabur: https://zeabur.pcl2ce.dpdns.org/~~ (已删除，总是自动暂停服务)<br>
 
 # 关于下载
 
