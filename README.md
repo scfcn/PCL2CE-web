@@ -8,7 +8,7 @@
 </div>
 
 # 预览
-香港 CDN：www.pcl2ce.dpdns.org(推荐大陆用户使用)<br>
+香港 CDN：www.pcl2ce.dpdns.org (推荐大陆用户使用)<br>
 github-pages: https://github.pcl2ce.dpdns.org/ （部署可能不及时）<br>
 cloudflare CDN: https://cf.pcl2ce.dpdns.org/<br>
 ~~vercel: https://vercel.pcl2ce.dpdns.org/~~ (无法正确识别dpdns.org)<br>
