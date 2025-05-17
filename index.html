@@ -7,6 +7,53 @@
     <link rel="stylesheet" href="./css/index.css">
     <script src="./js/index.js"></script>
     <script src="./js/buildTime.js"></script>
+    <!-- 添加移动端菜单样式 -->
+    <style>
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: currentColor;
+            padding: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .navbar {
+                justify-content: space-between;
+                padding: 0 15px;
+            }
+            
+            .nav-btns {
+                position: absolute;
+                top: 60px;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--bg-color, #1a1a1a);
+                border-radius: 0 0 0 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                padding: 15px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .nav-btns.active {
+                transform: translateX(0);
+            }
+            
+            .nav-btns a {
+                margin: 8px 0;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <link rel="icon" href="./img/logo.ico"></head>
@@ -19,7 +66,17 @@
                  class="logo-hover">
             <span>PCL2 社区版</span>
         </h1>
-        <div class="nav-btns">
+        
+        <!-- 添加菜单按钮 -->
+        <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        
+        <div class="nav-btns" id="navMenu">
             <a href="./index.html" 
                class="github-btn"
                data-cursor-effect="hover">
@@ -59,20 +116,14 @@
         </iframe>
         <div class="btn-container">
             <div class="btn-row">
-                <a href="https://download.pcl2ce.dpdns.org/https://github.com/PCL-Community/PCL2-CE/releases/latest/download/PCL2_CE_x64.exe"
+                <a href="./dl.html"
                    class="github-btn"
-                   data-cursor-effect="hover">下载最新稳定版(x64)</a>
-                <a href="https://download.pcl2ce.dpdns.org/https://github.com/PCL-Community/PCL2-CE/releases/latest/download/PCL2_CE_ARM64.exe"
-                   class="github-btn"
-                   data-cursor-effect="hover">下载最新稳定版(ARM64)</a>
+                   data-cursor-effect="hover">下载最新版</a>
             </div>
             <div class="btn-row">
                 <a href="./download.html"
                    class="github-btn"
                    data-cursor-effect="hover">历史版本</a>
-                <a href="https://github.com/PCL-Community/PCL2-CE" target="_blank" 
-                   class="github-btn"
-                   data-cursor-effect="hover">github</a>
             </div>
         </div>
     </section>

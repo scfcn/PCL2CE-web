@@ -131,3 +131,96 @@ if(typeof savedTheme === 'undefined'){
     const savedTheme = localStorage.getItem('theme') || 'dark';
     body.setAttribute('data-theme', savedTheme);
 }
+
+// 移动端菜单适配
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    
+    const menuToggle = document.createElement('button');
+    menuToggle.className = 'menu-toggle';
+    menuToggle.setAttribute('aria-label', '菜单');
+    menuToggle.innerHTML = `
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    `;
+    
+    const navBtns = navbar.querySelector('.nav-btns');
+    if (navBtns) {
+        navbar.insertBefore(menuToggle, navBtns);
+        
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navBtns.classList.toggle('active');
+        });
+        
+        const menuItems = navBtns.querySelectorAll('a');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navBtns.classList.remove('active');
+                }
+            });
+        });
+        
+        document.addEventListener('click', function(e) {
+            if (navBtns.classList.contains('active') && 
+                !navBtns.contains(e.target) && 
+                !menuToggle.contains(e.target)) {
+                navBtns.classList.remove('active');
+            }
+        });
+    }
+    
+    const style = document.createElement('style');
+    style.textContent = `
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: currentColor;
+            padding: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .navbar {
+                justify-content: space-between;
+                padding: 0 15px;
+            }
+            
+            .nav-btns {
+                position: absolute;
+                top: 60px;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--bg-color, #1a1a1a);
+                border-radius: 0 0 0 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                padding: 15px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .nav-btns.active {
+                transform: translateX(0);
+            }
+            
+            .nav-btns a {
+                margin: 8px 0;
+                width: 100%;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+});
