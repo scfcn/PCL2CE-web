@@ -9,7 +9,7 @@ English / [简体中文](./README_EN.md)
 
 # Preview
 Master Node: www.pcl2ce.dpdns.org (recommended for mainland users)<br>
-cloudflare CDN: https://cf.pcl2ce.dpdns.org/<br>
+cloudflare CDN: https://cf.pcl2ce.dpdns.org<br>
 
 # About download
 
