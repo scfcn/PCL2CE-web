@@ -15,5 +15,5 @@ cloudflare CDN: cf.pcl2ce.dpdns.org<br>
 
 #### 下载使用github代理下载链接，来应对github在在国内半墙的状态（代理下载链接仅简体中文页面有）<br>
 #### 感谢下方人员提供代理链接
-#### [fishcpy](/fishcpy) download.fishcpy.top
-#### [pysio](/pysio2007) s3.pysio.online
+#### [fishcpy](https://github.com/fishcpy) download.fishcpy.top
+#### [pysio](https://github.com/pysio2007) s3.pysio.online
