@@ -13,5 +13,7 @@ cloudflare CDN: https://cf.pcl2ce.dpdns.org<br>
 
 # About download
 
-#### Download using download.pcl2ce.dpdns.org proxy github download link, to deal with github in the half-wall state in China (proxy download link only simplified Chinese page)<br>
-#### [Click here to view the downloadable mirror UI interface repository](https://github.com/fishcpy/gh-proxy-pcl2ce-download)
+#### Download and use the github proxy download link to deal with the half-wall state of github in China (the proxy download link is only available on the Simplified Chinese page)<br>.
+#### Thanks to the following people for providing the proxy link
+#### [fishcpy](https://github.com/fishcpy) download.fishcpy.top
+#### [pysio](https://github.com/pysio2007) s3.pysio.online
