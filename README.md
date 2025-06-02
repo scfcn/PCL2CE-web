@@ -13,5 +13,7 @@ cloudflare CDN: cf.pcl2ce.dpdns.org<br>
 
 # 关于下载
 
-#### 下载使用download.pcl2ce.dpdns.org代理github下载链接，来应对github在在国内半墙的状态（代理下载链接仅简体中文页面有）<br>
-#### [点击这里查看下载镜像UI界面仓库](https://github.com/fishcpy/gh-proxy-pcl2ce-download)
+#### 下载使用github代理下载链接，来应对github在在国内半墙的状态（代理下载链接仅简体中文页面有）<br>
+#### 感谢下方人员提供代理链接
+#### [fishcpy](/fishcpy) download.fishcpy.top
+#### [pysio](/pysio2007) s3.pysio.online
