@@ -8,8 +8,7 @@ English / [简体中文](./README_EN.md)
 </div>
 
 # Preview
-Master Node: www.pcl2ce.dpdns.org (recommended for mainland users)<br>
-cloudflare CDN: https://cf.pcl2ce.dpdns.org<br>
+Master Node: pclce-web.demo.fis.ink (recommended for mainland users)<br>
 
 # About download
 
