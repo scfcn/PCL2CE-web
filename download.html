@@ -1,98 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="dark">
+<html lang="zh-CN" data-theme="dark" data-title-key="download.title">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>下载 PCL2 社区版 | 开源免费的Minecraft启动器</title>
+    <link rel="stylesheet" href="./css/index.css">
     <link rel="icon" href="./img/logo.ico">
+    <script src="./js/index.js"></script>
+    <script src="./js/buildTime.js"></script>
+    <script src="./js/i18n.js"></script>
+    <script src="./js/pjax.js"></script>
     <style>
+        /* Download page specific styles */
         :root {
-            --primary: #2ecc71;
-            --secondary: #27ae60;
             --preview-primary: #f1c40f;
             --preview-secondary: #f39c12;
             --glass-dark: rgba(16, 24, 39, 0.9);
             --glass-light: rgba(255, 255, 255, 0.15);
-            --gradient-dark: linear-gradient(152deg, #1a1e2c 0%, #2d3250 100%);
-            --gradient-light: linear-gradient(152deg, #f0f4f8 0%, #e2e8f0 100%);
-            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.25);
-            --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'HarmonyOS Sans', 'Segoe UI', system-ui;
-        }
-
-        body {
-            background: var(--gradient-dark);
-            color: #e2e8f0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.7;
-        }
-
-        .navbar {
-            padding: 1rem 6%;
-            background: var(--glass-dark);
-            backdrop-filter: blur(8px) saturate(180%);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: var(--shadow-lg);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .navbar h1 {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.8rem;
-            font-weight: 600;
-            letter-spacing: -0.025em;
-        }
-
-        .logo-hover {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            transition: var(--transition);
-        }
-
-        .logo-hover:hover {
-            transform: rotate(360deg);
-        }
-
-        .nav-btns {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .github-btn {
-            background: var(--glass-light);
-            color: #e2e8f0;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem;
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.1);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .github-btn:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
         }
         .download-container {
             margin-top: 100px;
@@ -211,34 +135,8 @@
             position: absolute;
             left: 0;
         }
-        .main-footer {
-            background: var(--glass-dark);
-            backdrop-filter: blur(8px);
-            padding: 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: auto;
-        }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            align-items: center;
-        }
-        .footer-content p {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        .footer-link {
-            color: var(--primary);
-            transition: var(--transition);
-            text-decoration: none;
-        }
-        .footer-link:hover {
-            color: #3498db;
-            transform: translateY(-2px);
-        }
+
+
         @media (max-width: 768px) {
             .navbar {
                 padding: 1rem;
@@ -258,8 +156,7 @@
             background: var(--gradient-light);
             color: #1e293b;
         }
-        [data-theme="light"] .navbar,
-        [data-theme="light"] .main-footer {
+        [data-theme="light"] .navbar {
             background: rgba(255, 255, 255, 0.9);
             border-color: rgba(0, 0, 0, 0.1);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -281,46 +178,44 @@
         [data-theme="light"] .changelog {
             color: #475569;
         }
-        [data-theme="light"] .footer-content p {
-            color: #475569;
-        }
-        [data-theme="light"] .footer-link {
-            color: var(--primary);
-        }
-        [data-theme="light"] .footer-link:hover {
-            color: var(--secondary);
-        }
+
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <h1>
-            <img src="./img/logo.ico" 
-                 alt="PCL2 Logo"
-                 class="logo-hover">
-            <span>PCL2 社区版</span>
-        </h1>
-        <div class="nav-btns">
-            <a href="./index.html" 
-               class="github-btn"
-               data-cursor-effect="hover">
-               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                   <polyline points="9 22 9 12 15 12 15 22"></polyline>
-               </svg>
-               首页</a>
-            <a href="https://github.com/PCL-Community/PCL2-CE" target="_blank" 
-               class="github-btn"
-               data-cursor-effect="hover">
-               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                   <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" 
-                         fill="currentColor"/>
-               </svg>
-               GitHub</a>
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="./img/logo.ico" alt="PCL2 Logo" class="logo">
+                <span class="brand-text" data-i18n="brand.name">PCL2 社区版</span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="./index.html" class="nav-link" data-i18n="nav.home">首页</a>
+                <a href="./index.html#features" class="nav-link" data-i18n="nav.features">功能特性</a>
+                <a href="./dl.html" class="nav-link" data-i18n="nav.download">下载</a>
+                <a href="./index.html#about" class="nav-link" data-i18n="nav.about">关于</a>
+                <a href="https://github.com/PCL-Community/PCL2-CE" target="_blank" class="nav-link github-link" data-i18n="nav.github">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <div class="language-selector">
+                    <a href="#" class="lang-switch" data-lang="zh" data-i18n="footer.language">简体中文</a>
+                    <span> | </span>
+                    <a href="#" class="lang-switch" data-lang="en" data-i18n="footer.language.switch">English</a>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
-    <main class="download-container">
+    <main id="main-content" class="download-container container">
 
 
         <div class="version-card">
@@ -573,25 +468,71 @@
     </main>
 
     <footer class="main-footer">
-        <div class="footer-content">
-            <p>web BY <a href="https://github.com/fishcpy" 
-                target="_blank" 
-                class="footer-link">
-                fishcpy
-             </a> 丨 构建时间<span class="build-time"></span></p>
-            <a href="https://github.com/Hex-Dragon/PCL2" 
-               target="_blank" 
-               class="footer-link">
-               PCL2 社区版基于 龙腾猫跃 PCL2 构建
-            </a>
-            <div class="language-selector">
-                简体中文</a> | 
-                <a href="/en/download.html" class="footer-link">English</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="./img/logo.ico" alt="PCL2 Logo" class="footer-logo">
+                        <div class="brand-info">
+                            <h3 data-i18n="footer.brand">PCL2 社区版</h3>
+                            <p data-i18n="footer.tagline">开源免费的 Minecraft 启动器</p>
+                        </div>
+                    </div>
+                    <p class="footer-description" data-i18n="footer.description">
+                        基于龙腾猫跃 PCL2 构建的社区版本，为 Minecraft 玩家提供最好的游戏体验。
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer.quicklinks">快速链接</h4>
+                    <ul class="footer-links">
+                        <li><a href="./index.html" data-i18n="footer.home">首页</a></li>
+                        <li><a href="./index.html#features" data-i18n="footer.features">功能特性</a></li>
+                        <li><a href="./index.html#download" data-i18n="footer.download">下载</a></li>
+                        <li><a href="./index.html#about" data-i18n="footer.about">关于我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer.resources">资源下载</h4>
+                    <ul class="footer-links">
+                        <li><a href="./dl.html" data-i18n="footer.latest">最新版本</a></li>
+                        <li><a href="./download.html" data-i18n="footer.history">历史版本</a></li>
+                        <li><a href="https://github.com/PCL-Community/PCL2-CE" target="_blank" data-i18n="footer.source">源代码</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer.community">社区</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/PCL-Community/PCL2-CE" target="_blank">GitHub</a></li>
+                        <li><a href="https://github.com/PCL-Community/PCL2-CE/issues" target="_blank" data-i18n="footer.issues">问题反馈</a></li>
+                        <li><a href="https://github.com/PCL-Community/PCL2-CE/discussions" target="_blank" data-i18n="footer.discussions">讨论区</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <p>
+                        <span data-i18n="footer.built_by">网站由</span> <a href="https://github.com/fishcpy" target="_blank" class="footer-link">fishcpy</a> <span data-i18n="footer.built">构建</span>
+                        <span class="separator">|</span>
+                        <span data-i18n="footer.build_time">构建时间:</span> <span class="build-time"></span>
+                    </p>
+                    <p>
+                        <a href="https://github.com/Hex-Dragon/PCL2" target="_blank" class="footer-link" data-i18n="footer.based_on">
+                            PCL2 社区版基于龙腾猫跃 PCL2 构建
+                        </a>
+                    </p>
+                </div>
+                <div class="language-selector">
+                    <a href="#" class="footer-link lang-switch" data-lang="zh" data-i18n="footer.language">简体中文</a>
+                    <span class="separator">|</span>
+                    <a href="#" class="footer-link lang-switch" data-lang="en" data-i18n="footer.language.switch">English</a>
+                </div>
             </div>
         </div>
     </footer>
-    
-    <script src="./js/buildTime.js"></script>
 </body>
 </html>
 <style>
