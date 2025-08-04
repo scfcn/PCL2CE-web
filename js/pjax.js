@@ -65,13 +65,12 @@ class PjaxManager {
     }
 
     showLoadingIndicator() {
-        // 添加加载指示器
+        // 添加进度条指示器
         const indicator = document.createElement('div');
         indicator.id = 'pjax-loading';
         indicator.innerHTML = `
-            <div class="loading-spinner">
-                <div class="spinner"></div>
-                <span>加载中...</span>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
             </div>
         `;
         indicator.style.cssText = `
@@ -79,44 +78,50 @@ class PjaxManager {
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 3px;
             z-index: 9999;
-            backdrop-filter: blur(5px);
+            background: transparent;
         `;
         
-        const spinner = indicator.querySelector('.loading-spinner');
-        spinner.style.cssText = `
-            background: var(--bg-color, #fff);
-            padding: 20px 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            color: var(--text-color, #333);
+        const progressBar = indicator.querySelector('.progress-bar');
+        progressBar.style.cssText = `
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            overflow: hidden;
         `;
 
-        const spinnerElement = indicator.querySelector('.spinner');
-        spinnerElement.style.cssText = `
-            width: 30px;
-            height: 30px;
-            border: 3px solid var(--border-color, #e0e0e0);
-            border-top: 3px solid var(--primary-color, #007bff);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 10px;
+        const progressFill = indicator.querySelector('.progress-fill');
+        progressFill.style.cssText = `
+            height: 100%;
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            width: 0%;
+            animation: progressAnimation 2s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
         `;
 
-        // 添加旋转动画
-        if (!document.querySelector('#pjax-spinner-style')) {
+        // 添加进度条动画
+        if (!document.querySelector('#pjax-progress-style')) {
             const style = document.createElement('style');
-            style.id = 'pjax-spinner-style';
+            style.id = 'pjax-progress-style';
             style.textContent = `
-                @keyframes spin {
-                    0% { transform: rotate(0deg); }
-                    100% { transform: rotate(360deg); }
+                @keyframes progressAnimation {
+                    0% { 
+                        width: 0%; 
+                        transform: translateX(0%);
+                    }
+                    50% { 
+                        width: 70%; 
+                        transform: translateX(0%);
+                    }
+                    100% { 
+                        width: 100%; 
+                        transform: translateX(0%);
+                    }
+                }
+                
+                #pjax-loading .progress-fill {
+                    transition: all 0.3s ease;
                 }
             `;
             document.head.appendChild(style);
@@ -137,8 +142,9 @@ class PjaxManager {
 
         // 重新初始化国际化
         if (window.i18n) {
-            window.i18n.applyTranslations();
-            window.i18n.updateLanguageToggle();
+            window.i18n.updatePageContent();
+            window.i18n.updateLanguageSelector();
+            window.i18n.bindLanguageToggle();
         }
 
         // 重新初始化构建时间
@@ -183,6 +189,9 @@ class PjaxManager {
     reinitializePageFeatures() {
         const currentPath = window.location.pathname;
 
+        // 移除所有页面特定类
+        document.documentElement.classList.remove('dl-page');
+
         // 首页特定功能
         if (currentPath === '/' || currentPath === '/index.html') {
             this.initializeHomePage();
@@ -191,6 +200,10 @@ class PjaxManager {
         // 下载页面特定功能
         if (currentPath.includes('download.html') || currentPath.includes('dl.html')) {
             this.initializeDownloadPage();
+            // 为dl.html页面添加特定类
+            if (currentPath.includes('dl.html')) {
+                document.documentElement.classList.add('dl-page');
+            }
         }
     }
 

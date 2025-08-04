@@ -1,9 +1,10 @@
-// 多语言支持系统
+// 国际化支持类
 class I18n {
     constructor() {
         this.currentLang = this.getStoredLanguage() || this.detectLanguage();
-        this.translations = {};
-        this.loadTranslations();
+        this.translations = this.getTranslations();
+        this.languageClickHandler = null;
+        this.isEventsBound = false;
     }
 
     // 检测浏览器语言
@@ -14,17 +15,17 @@ class I18n {
 
     // 获取存储的语言设置
     getStoredLanguage() {
-        return localStorage.getItem('pcl2-language');
+        return localStorage.getItem('language');
     }
 
     // 存储语言设置
     setStoredLanguage(lang) {
-        localStorage.setItem('pcl2-language', lang);
+        localStorage.setItem('language', lang);
     }
 
-    // 加载翻译数据
-    loadTranslations() {
-        this.translations = {
+    // 获取翻译数据
+    getTranslations() {
+        return {
             zh: {
                 // 导航栏
                 'nav.brand': 'PCL2 社区版',
@@ -43,13 +44,13 @@ class I18n {
                 // 首页标题
                 'hero.title': 'PCL2 社区版',
                 'hero.subtitle': '开源免费的 Minecraft 启动器',
-                'hero.description': '基于龙腾猫跃 PCL2 构建的社区版本，为 Minecraft 玩家提供最好的游戏体验。',
-                'hero.download': '下载最新版',
+                'hero.description': '强大的 Minecraft 启动器，提供最佳的游戏体验。支持多版本管理、模组管理、账户管理等功能。',
+                'hero.download': '立即下载',
                 'hero.history': '历史版本',
                 
                 // 统计数据
                 'stats.users': '活跃用户',
-                'stats.opensource': '开源免费',
+                'stats.opensource': '开源项目',
                 'stats.community': '社区支持',
                 
                 // 演示部分
@@ -58,29 +59,29 @@ class I18n {
                 
                 // 功能特性
                 'features.title': '功能特性',
-                'features.description': 'PCL2 社区版为您提供全面的 Minecraft 游戏管理体验',
+                'features.description': 'PCL2 社区版提供全面的 Minecraft 游戏管理体验',
                 'features.crash.title': '智能崩溃分析',
                 'features.crash.description': '自动分析游戏崩溃原因，提供解决方案',
-                'features.crash.item1': '自动日志分析',
-                'features.crash.item2': '智能错误诊断',
+                'features.crash.item1': '自动检测常见问题',
+                'features.crash.item2': '提供详细错误报告',
                 'features.folder.title': '多文件夹管理',
-                'features.folder.description': '支持多个游戏实例管理，不同版本、不同模组包完全隔离，轻松切换游戏环境。',
-                'features.folder.item1': '独立游戏实例',
-                'features.folder.item2': '版本隔离管理',
-                'features.download.title': '资源直接下载',
-                'features.download.description': '内置资源商店，支持直接下载光影、材质包、模组等资源，无需手动安装。',
-                'features.download.item2': '材质包管理',
-                'features.download.item3': '模组一键安装',
-                'features.account.title': '多账号支持',
-                'features.account.description': '支持多个 Minecraft 账号管理，快速切换不同账号，支持正版和离线模式。',
-                'features.account.item1': '多账号管理',
-                'features.account.item2': '快速账号切换',
+                'features.folder.description': '支持多个游戏文件夹，轻松管理不同版本',
+                'features.folder.item1': '独立版本管理',
+                'features.folder.item2': '快速切换游戏目录',
+                'features.download.title': '直接资源下载',
+                'features.download.description': '内置资源下载器，一键获取游戏资源',
+                'features.download.item2': '自动选择最优线路',
+                'features.download.item3': '支持断点续传',
+                'features.account.title': '多账户支持',
+                'features.account.description': '支持多种登录方式，管理多个游戏账户',
+                'features.account.item1': '微软账户登录',
+                'features.account.item2': '离线模式支持',
                 'features.java.title': 'Java 版本管理',
-                'features.java.description': '自动检测和管理 Java 版本，为不同的 Minecraft 版本选择最适合的 Java 环境。',
+                'features.java.description': '自动检测和管理 Java 版本，为不同的 Minecraft 版本选择最合适的 Java 环境。',
                 'features.java.item1': '自动 Java 检测',
-                'features.java.item2': '版本智能匹配',
+                'features.java.item2': '智能版本匹配',
                 'features.opensource.title': '开源免费',
-                'features.opensource.description': '完全开源的项目，永久免费使用，社区驱动开发，持续更新和改进。',
+                'features.opensource.description': '完全开源的项目，永久免费使用，社区驱动开发，持续更新改进。',
                 'features.opensource.item1': '完全开源',
                 'features.opensource.item2': '永久免费',
                 'features.opensource.item3': '社区驱动',
@@ -89,68 +90,39 @@ class I18n {
                 'screenshots.title': '界面预览',
                 'screenshots.description': '直观了解 PCL2 社区版的界面设计和功能布局',
                 'screenshots.main.title': '主界面',
-                'screenshots.main.description': '简洁直观的主界面设计，所有功能一目了然。支持深色主题切换，',
+                'screenshots.main.description': '简洁直观的主界面设计，让所有功能一目了然。支持深色主题切换。',
                 'screenshots.main.item2': '直观的操作体验',
-                'screenshots.main.item3': '支持主题切换',
+                'screenshots.main.item3': '主题切换支持',
                 'screenshots.version.title': '版本管理',
-                'screenshots.version.description': '强大的版本管理功能，支持多个 Minecraft 版本同时管理。自动下载和安装，版本切换只需一键操作。支持快照版本、正式版本以及各种模组版本。',
-                'screenshots.version.item1': '多版本并存管理',
-                'screenshots.version.item2': '自动下载安装和补全文件',
+                'screenshots.version.description': '强大的版本管理系统，支持同时管理多个 Minecraft 版本。自动下载安装，一键切换版本。支持快照版本、正式版本以及各种模组版本。',
+                'screenshots.version.item1': '多版本共存',
+                'screenshots.version.item2': '自动下载、安装、补全文件',
                 'screenshots.version.item3': '一键版本切换',
                 'screenshots.mods.title': '模组管理',
-                'screenshots.mods.description': '便捷的模组安装和管理系统，支持从多个来源下载模组。智能依赖检测，自动解决模组冲突。提供模组搜索、分类和评级功能，让你轻松找到心仪的模组。',
+                'screenshots.mods.description': '便捷的模组安装和管理系统，支持多源下载。智能依赖检测，自动冲突解决。提供模组搜索、分类和评分功能。',
                 'screenshots.mods.item1': '智能模组管理',
                 'screenshots.mods.item2': '自动依赖检测',
                 'screenshots.mods.item4': '模组搜索',
                 
                 // 下载部分
                 'download.title': '立即下载',
-                'download.description': '开始你的 Minecraft 之旅，体验最好用的启动器',
+                'download.description': '使用最好的启动器体验，开始你的 Minecraft 之旅',
                 'download.latest': '下载最新版',
                 'download.all_versions': '查看所有版本',
 
                 'download.card.title': 'PCL2 社区版',
-                'download.card.subtitle': 'Community Edition',
+                'download.card.subtitle': '社区版',
                 'download.card.tag1': '开源免费',
                 'download.card.tag2': '智能管理',
                 'download.card.tag3': '社区支持',
                 
                 // 关于部分
                 'about.title': '关于 PCL 社区',
-                'about.description': '非官方的 PCL 社区玩家组织，不代表开发者龙腾猫跃和 PCL 官方。',
+                'about.description': '非官方 PCL 社区玩家组织，不代表开发者龙腾猫跃或 PCL 官方。',
                 'about.stat1.title': '持续更新',
                 'about.stat1.description': '定期发布新功能和修复',
                 'about.stat2.title': '安全可靠',
                 'about.stat2.description': '开源透明，安全无忧',
-                
-                // 下载页面
-                'download.title': '下载 PCL2 社区版 | 开源免费的Minecraft启动器',
-                'dl.title': 'PCL2 社区版下载',
-                'dl.stable': '最新稳定版',
-                'dl.instruction.step1': '按下 Win + S键打开搜索，搜索 系统信息 并打开。',
-                'dl.instruction.step2': '查看 系统类型：',
-                'dl.instruction.x64': '若显示 x64 电脑 → 下载 X64 版本。',
-                'dl.instruction.arm64': '若显示 ARM64 电脑 → 下载 ARM64 版本。',
-                'dl.tip.title': ' 💡 小提示:',
-                'dl.tip.x64': '常规台式机/笔记本通常为 X64。',
-                'dl.tip.arm64': 'ARM64 主要用于微软 Surface Pro X 等设备。',
-                'dl.tip.fallback': '若不确定，优先选 X64（兼容性更广），若不可用再选 ARM64。',
-                'dl.x64.title': 'X64 版本',
-                'dl.x64.desc': '适用于大多数 Windows 电脑',
-                'dl.arm64.title': 'ARM64 版本',
-                'dl.arm64.desc': '适用于 ARM 架构的 Windows 电脑',
-                'dl.mirror.1': '线路1',
-                'dl.mirror.2': '线路2',
-                'dl.mirror.github': 'GitHub（境内下载可能较慢）',
-                'dl.history.title': '历史版本下载',
-                'dl.history.desc': '如果您需要旧版本的 PCL2 社区版，可以从以下链接下载：',
-                'dl.history.link': '历史版本',
-                
-                // 404页面
-                '404.title': '页面未找到',
-                '404.description': '抱歉，您访问的页面不存在或已被移动。',
-                '404.back': '返回首页',
-                '404.download': '前往下载',
                 
                 // 页脚
                 'footer.brand': 'PCL2 社区版',
@@ -162,7 +134,7 @@ class I18n {
                 'footer.download': '下载',
                 'footer.about': '关于我们',
                 'footer.about.title': '关于项目',
-                'footer.about.description': 'PCL2 社区版是基于龙腾猫跃 PCL2 构建的开源 Minecraft 启动器',
+                'footer.about.description': 'PCL2 社区版是基于龙腾猫跃 PCL2 的开源 Minecraft 启动器',
                 'footer.resources': '资源下载',
                 'footer.resources.title': '资源',
                 'footer.latest': '最新版本',
@@ -174,9 +146,9 @@ class I18n {
                 'footer.discussions': '讨论区',
                 'footer.links.github': 'GitHub',
                 'footer.links.issues': '问题反馈',
-                'footer.links.releases': '版本发布',
+                'footer.links.releases': '发布页面',
                 'footer.links.discussions': '讨论区',
-                'footer.links.wiki': '使用文档',
+                'footer.links.wiki': '文档',
                 'footer.links.contribute': '贡献指南',
                 'footer.links.download': '下载启动器',
                 'footer.links.history': '历史版本',
@@ -186,7 +158,36 @@ class I18n {
                 'footer.build_time': '构建时间:',
                 'footer.based_on': 'PCL2 社区版基于龙腾猫跃 PCL2 构建',
                 'footer.language': '简体中文',
-                'footer.language.switch': 'English'
+                'footer.language.switch': 'English',
+                
+                // 下载页面
+                'download.title': '下载 PCL2 社区版 | 开源免费的Minecraft启动器',
+                'dl.title': 'PCL2 社区版下载',
+                'dl.stable': '最新稳定版',
+                'dl.instruction.step1': '按 Win + S 打开搜索，搜索"系统信息"并打开。',
+                'dl.instruction.step2': '查看系统类型：',
+                'dl.instruction.x64': '若显示 x64 电脑 -> 下载 X64 版本。',
+                'dl.instruction.arm64': '若显示 ARM64 电脑 -> 下载 ARM64 版本。',
+                'dl.tip.title': '小提示:',
+                'dl.tip.x64': '一般的台式机/笔记本电脑通常是 X64。',
+                'dl.tip.arm64': 'ARM64 主要是微软 Surface Pro X 等设备。',
+                'dl.tip.fallback': '如果不确定，先选择 X64（兼容性更好），不行再试 ARM64。',
+                'dl.x64.title': 'X64 版本',
+                'dl.x64.desc': '适用于大多数 Windows 电脑',
+                'dl.arm64.title': 'ARM64 版本',
+                'dl.arm64.desc': '适用于 ARM 架构的 Windows 电脑',
+                'dl.mirror.1': '镜像 1',
+                'dl.mirror.2': '镜像 2',
+                'dl.mirror.github': 'GitHub（国内可能较慢）',
+                'dl.history.title': '历史版本下载',
+                'dl.history.desc': '如果您需要 PCL2 社区版的旧版本，可以从以下链接下载：',
+                'dl.history.link': '历史版本',
+                
+                // 404页面
+                '404.title': '页面未找到',
+                '404.description': '抱歉，您访问的页面不存在或已被移动。',
+                '404.back': '返回首页',
+                '404.download': '前往下载'
             },
             en: {
                 // 导航栏
@@ -324,14 +325,14 @@ class I18n {
                 'download.title': 'Download PCL2 Community Edition | Open Source Free Minecraft Launcher',
                 'dl.title': 'PCL2 Community Edition Download',
                 'dl.stable': 'Latest Stable Version',
-                'dl.instruction.step1': 'Press Win + S to open search, search for \'System Information\' and open it.',
+                'dl.instruction.step1': 'Press Win + S to open search, search for System Information and open it.',
                 'dl.instruction.step2': 'Check System Type:',
-                'dl.instruction.x64': 'If it shows x64-based PC → Download X64 version.',
-                'dl.instruction.arm64': 'If it shows ARM64-based PC → Download ARM64 version.',
-                'dl.tip.title': ' 💡 Tips:',
+                'dl.instruction.x64': 'If it shows x64-based PC -> Download X64 version.',
+                'dl.instruction.arm64': 'If it shows ARM64-based PC -> Download ARM64 version.',
+                'dl.tip.title': 'Tips:',
                 'dl.tip.x64': 'Regular desktops/laptops are usually X64.',
                 'dl.tip.arm64': 'ARM64 is mainly for devices like Microsoft Surface Pro X.',
-                'dl.tip.fallback': 'If unsure, choose X64 first (better compatibility), try ARM64 if it doesn\'t work.',
+                'dl.tip.fallback': 'If unsure, choose X64 first (better compatibility), try ARM64 if it does not work.',
                 'dl.x64.title': 'X64 Version',
                 'dl.x64.desc': 'For most Windows computers',
                 'dl.arm64.title': 'ARM64 Version',
@@ -349,22 +350,6 @@ class I18n {
                 '404.back': 'Back to Home',
                 '404.download': 'Go to Download',
                 
-                // 页脚
-                'footer.brand': 'PCL2 Community Edition',
-                'footer.tagline': 'Open Source Free Minecraft Launcher',
-                'footer.description': 'Community edition based on LTCat PCL2, providing the best gaming experience for Minecraft players.',
-                'footer.quicklinks': 'Quick Links',
-                'footer.home': 'Home',
-                'footer.features': 'Features',
-                'footer.download': 'Download',
-                'footer.about': 'About Us',
-                'footer.resources': 'Resources',
-                'footer.latest': 'Latest Version',
-                'footer.history': 'Historical Versions',
-                'footer.source': 'Source Code',
-                'footer.community': 'Community',
-                'footer.issues': 'Issue Feedback',
-                'footer.discussions': 'Discussions',
                 'footer.language': 'English',
                 'footer.language.switch': '简体中文'
             }
@@ -453,26 +438,34 @@ class I18n {
             this.updateLanguageSelector();
             this.bindLanguageToggle();
         });
-
-        // 监听页面加载完成
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                this.updatePageContent();
-            });
-        }
     }
 
     // 重新绑定语言切换功能（用于PJAX）
     bindLanguageToggle() {
-        // 绑定语言切换事件
-        document.addEventListener('click', (e) => {
+        // 防止重复绑定
+        if (this.isEventsBound) {
+            return;
+        }
+        
+        // 移除旧的事件监听器（如果存在）
+        if (this.languageClickHandler) {
+            document.removeEventListener('click', this.languageClickHandler);
+        }
+        
+        // 创建新的事件处理器
+        this.languageClickHandler = (e) => {
             const langLink = e.target.closest('[data-lang]');
             if (langLink) {
                 e.preventDefault();
                 const lang = langLink.getAttribute('data-lang');
-                this.switchLanguage(lang);
+                if (lang !== this.currentLang) {
+                    this.switchLanguage(lang);
+                }
             }
-        });
+        };
+        
+        // 绑定语言切换事件
+        document.addEventListener('click', this.languageClickHandler);
         
         const langToggle = document.querySelector('.lang-toggle');
         if (langToggle) {
@@ -486,6 +479,8 @@ class I18n {
                 this.switchLanguage(newLang);
             });
         }
+        
+        this.isEventsBound = true;
     }
 
     // 获取当前语言
