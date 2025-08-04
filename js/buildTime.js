@@ -1,4 +1,4 @@
-const BUILD_TIME = '2025.5.16-17:30';
+const BUILD_TIME = '2025.8.4';
 
 function updateBuildTime() {
     const elements = document.querySelectorAll('.build-time');
@@ -8,3 +8,4 @@ function updateBuildTime() {
 }
 
 document.addEventListener('DOMContentLoaded', updateBuildTime);
+document.addEventListener('pjax:reinitialize', updateBuildTime);

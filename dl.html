@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="dark">
+<html lang="zh-CN" data-theme="dark" data-title-key="dl.title">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,54 +7,10 @@
     <link rel="stylesheet" href="./css/index.css">
     <script src="./js/index.js"></script>
     <script src="./js/buildTime.js"></script>
+    <script src="./js/i18n.js"></script>
+    <script src="./js/pjax.js"></script>
     <link rel="icon" href="./img/logo.ico">
-    <!-- 添加移动端菜单样式 -->
-    <style>
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: currentColor;
-            padding: 8px;
-        }
-        
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            
-            .navbar {
-                justify-content: space-between;
-                padding: 0 15px;
-            }
-            
-            .nav-btns {
-                position: absolute;
-                top: 60px;
-                right: 0;
-                flex-direction: column;
-                background-color: var(--bg-color, #1a1a1a);
-                border-radius: 0 0 0 8px;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-                padding: 15px;
-                transform: translateX(100%);
-                transition: transform 0.3s ease;
-                z-index: 1000;
-            }
-            
-            .nav-btns.active {
-                transform: translateX(0);
-            }
-            
-            .nav-btns a {
-                margin: 8px 0;
-                width: 100%;
-            }
-        }
-    </style>
+
     <style>
         :root {
             --primary: #2ecc71;
@@ -67,6 +23,11 @@
             --gradient-light: linear-gradient(152deg, #f0f4f8 0%, #e2e8f0 100%);
             --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.25);
             --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
         }
         
         .download-container {
@@ -116,7 +77,7 @@
         
         .version-name {
             font-size: 1.5rem;
-            color: var(--primary);
+            color: #ffffff;
         }
         
         .version-date {
@@ -250,7 +211,7 @@
         }
 
         .historical-versions-container h2 {
-            color: var(--primary);
+            color: #ffffff;
             margin-bottom: 1rem;
         }
 
@@ -277,76 +238,70 @@
 <body>
     <!-- 导航栏 -->
     <nav class="navbar">
-        <h1>
-            <img src="./img/logo.ico" 
-                 alt="PCL2 Logo"
-                 class="logo-hover">
-            <span>PCL2 社区版</span>
-        </h1>
-        
-        <!-- 添加菜单按钮 -->
-        <button class="menu-toggle" id="menuToggle" aria-label="菜单">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <line x1="3" y1="12" x2="21" y2="12"></line>
-                <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-        </button>
-        
-        <div class="nav-btns" id="navMenu">
-            <a href="./index.html" 
-               class="github-btn"
-               data-cursor-effect="hover">
-               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                   <polyline points="9 22 9 12 15 12 15 22"></polyline>
-               </svg>
-               首页
-            </a>
-            <a href="https://github.com/PCL-Community/PCL2-CE" target="_blank" 
-               class="github-btn"
-               data-cursor-effect="hover">
-               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                   <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" 
-                         fill="currentColor"/>
-               </svg>
-               GitHub
-            </a>
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="./img/logo.ico" alt="PCL2 Logo" class="logo">
+                <span class="brand-text" data-i18n="nav.brand">PCL2 社区版</span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="./index.html" class="nav-link" data-i18n="nav.home">首页</a>
+                <a href="./index.html#features" class="nav-link" data-i18n="nav.features">功能特性</a>
+                <a href="./dl.html" class="nav-link" data-i18n="nav.download">下载</a>
+                <a href="./index.html#about" class="nav-link" data-i18n="nav.about">关于</a>
+                <a href="https://github.com/PCL-Community/PCL2-CE" target="_blank" class="nav-link github-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <div class="language-selector">
+                    <a href="#" class="lang-switch" data-lang="zh" data-i18n="nav.lang.zh">中</a>
+                    <span class="separator">|</span>
+                    <a href="#" class="lang-switch" data-lang="en" data-i18n="nav.lang.en">EN</a>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
     <!-- 页面内容 -->
-    <main class="download-container">
+    <main id="main-content" class="download-container">
         <div class="version-card">
             <div class="version-header">
                 <div>
-                    <div class="version-name">PCL2 社区版下载</div>
-                    <span class="version-tag stable">最新稳定版</span>
+                    <div class="version-name" data-i18n="dl.title">PCL2 社区版下载</div>
+                    <span class="version-tag stable" data-i18n="dl.stable">最新稳定版</span>
                 </div>
             </div>
             <div class="changelog">
-                <p>按下 Win + S键打开搜索，搜索 系统信息 并打开。</p>
-                <p>查看 系统类型：</p>           
-                <p>若显示 x64 电脑 → 下载 X64 版本。</p>
-                <p>若显示 ARM64 电脑 → 下载 ARM64 版本。</p>
-                <p style="font-size: 20px;"> 💡 小提示:</p>
-                <p>常规台式机/笔记本通常为 X64。</p>
-                <p>ARM64 主要用于微软 Surface Pro X 等设备。</p>  
-                <p>若不确定，优先选 X64（兼容性更广），若不可用再选 ARM64。</p>
+                <p data-i18n="dl.instruction.step1">按下 Win + S键打开搜索，搜索 系统信息 并打开。</p>
+                <p data-i18n="dl.instruction.step2">查看 系统类型：</p>           
+                <p data-i18n="dl.instruction.x64">若显示 x64 电脑 → 下载 X64 版本。</p>
+                <p data-i18n="dl.instruction.arm64">若显示 ARM64 电脑 → 下载 ARM64 版本。</p>
+                <p style="font-size: 20px;" data-i18n="dl.tip.title"> 💡 小提示:</p>
+                <p data-i18n="dl.tip.x64">常规台式机/笔记本通常为 X64。</p>
+                <p data-i18n="dl.tip.arm64">ARM64 主要用于微软 Surface Pro X 等设备。</p>  
+                <p data-i18n="dl.tip.fallback">若不确定，优先选 X64（兼容性更广），若不可用再选 ARM64。</p>
             </div>
             
             <div class="download-grid">
                 <div class="download-option">
-                    <h3>X64 版本</h3>
-                    <p>适用于大多数 Windows 电脑</p>
+                    <h3 data-i18n="dl.x64.title">X64 版本</h3>
+                    <p data-i18n="dl.x64.desc">适用于大多数 Windows 电脑</p>
                     <div class="download-mirrors">
-                        <a href="https://download.fishcpy.top/dl/pclce/pcl2ce/PCL2_CE_Release_x64.exe" class="mirror-btn">
+                        <a href="https://download.fishcpy.top/dl/pclce/pcl2ce/PCL2_CE_Release_x64.exe" class="mirror-btn" data-i18n="dl.mirror.1">
                             线路1
                         </a>
-                        <a href="https://s3.pysio.online/pcl2-ce/PCL2_CE_x64.exe" class="mirror-btn">
+                        <a href="https://s3.pysio.online/pcl2-ce/PCL2_CE_x64.exe" class="mirror-btn" data-i18n="dl.mirror.2">
                             线路2
                         </a>
-                        <a href="https://github.com/PCL-Community/PCL2-CE/releases/latest/download/PCL2_CE_x64.exe" class="mirror-btn">
+                        <a href="https://github.com/PCL-Community/PCL2-CE/releases/latest/download/PCL2_CE_x64.exe" class="mirror-btn" data-i18n="dl.mirror.github">
                             GitHub（境内下载可能较慢）
                         </a>
                         </a>
@@ -354,16 +309,16 @@
                 </div>
                 
                 <div class="download-option">
-                    <h3>ARM64 版本</h3>
-                    <p>适用于 ARM 架构的 Windows 电脑</p>
+                    <h3 data-i18n="dl.arm64.title">ARM64 版本</h3>
+                    <p data-i18n="dl.arm64.desc">适用于 ARM 架构的 Windows 电脑</p>
                     <div class="download-mirrors">
-                        <a href="https://download.fishcpy.top/dl/pclce/pcl2ce/PCL2_CE_Release_ARM64.exe" class="mirror-btn">
+                        <a href="https://download.fishcpy.top/dl/pclce/pcl2ce/PCL2_CE_Release_ARM64.exe" class="mirror-btn" data-i18n="dl.mirror.1">
                             线路1
                         </a>
-                        <a href="https://s3.pysio.online/pcl2-ce/PCL2_CE_ARM64.exe" class="mirror-btn">
+                        <a href="https://s3.pysio.online/pcl2-ce/PCL2-ce/PCL2_CE_ARM64.exe" class="mirror-btn" data-i18n="dl.mirror.2">
                             线路2
                         </a>
-                        <a href="https://github.com/PCL-Community/PCL2-CE/releases/latest/download/PCL2_CE_ARM64.exe" class="mirror-btn">
+                        <a href="https://github.com/PCL-Community/PCL2-CE/releases/latest/download/PCL2_CE_ARM64.exe" class="mirror-btn" data-i18n="dl.mirror.github">
                             GitHub（境内下载可能较慢）
                         </a>
                     </div>
@@ -371,68 +326,83 @@
             </div>
         </div>
 
+        <div class="historical-versions-container">
+        <h2 data-i18n="dl.history.title">历史版本下载</h2>
+        <p data-i18n="dl.history.desc">如果您需要旧版本的 PCL2 社区版，可以从以下链接下载：</p>
+        <ul>
+            <li><a href="./download.html" class="footer-link" data-i18n="dl.history.link">历史版本</a></li>
+        </ul>
+        </div>
     </main>
 
-    <div class="historical-versions-container">
-        <h2>历史版本下载</h2>
-        <p>如果您需要旧版本的 PCL2 社区版，可以从以下链接下载：</p>
-        <ul>
-            <li><a href="./download.html" class="footer-link">历史版本</a></li>
-        </ul>
-    </div>
-
-    <!-- 页脚 -->
+    <!-- Footer -->
     <footer class="main-footer">
-        <div class="footer-content">
-            <p>web BY <a href="https://github.com/fishcpy" 
-                target="_blank" 
-                class="footer-link">
-                fishcpy
-             </a> 丨 构建时间<span class="build-time"></span></p>
-            <a href="https://github.com/Hex-Dragon/PCL2" 
-               target="_blank" 
-               class="footer-link">
-               PCL2 社区版基于 龙腾猫跃 PCL2 构建
-            </a>
-            <div class="language-selector">
-                简体中文</a> | 
-                <a href="/en/dl.html" class="footer-link">English</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="./img/logo.ico" alt="PCL2 Logo" class="footer-logo">
+                        <div class="brand-info">
+                            <h3 data-i18n="footer.brand">PCL2 社区版</h3>
+                            <p data-i18n="footer.tagline">开源免费的 Minecraft 启动器</p>
+                        </div>
+                    </div>
+                    <p class="footer-description" data-i18n="footer.description">
+                        基于龙腾猫跃 PCL2 构建的社区版本，为 Minecraft 玩家提供最好的游戏体验。
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer.quicklinks">快速链接</h4>
+                    <ul class="footer-links">
+                        <li><a href="./index.html" data-i18n="footer.home">首页</a></li>
+                        <li><a href="./index.html#features" data-i18n="footer.features">功能特性</a></li>
+                        <li><a href="./dl.html" data-i18n="footer.download">下载</a></li>
+                        <li><a href="./index.html#about" data-i18n="footer.about">关于我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer.resources">资源下载</h4>
+                    <ul class="footer-links">
+                        <li><a href="./dl.html" data-i18n="footer.latest">最新版本</a></li>
+                        <li><a href="./download.html" data-i18n="footer.history">历史版本</a></li>
+                        <li><a href="https://github.com/PCL-Community/PCL2-CE" target="_blank" data-i18n="footer.source">源代码</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-i18n="footer.community">社区</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/PCL-Community/PCL2-CE" target="_blank">GitHub</a></li>
+                        <li><a href="https://github.com/PCL-Community/PCL2-CE/issues" target="_blank" data-i18n="footer.issues">问题反馈</a></li>
+                        <li><a href="https://github.com/PCL-Community/PCL2-CE/discussions" target="_blank" data-i18n="footer.discussions">讨论区</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-info">
+                    <p>
+                        <span data-i18n="footer.built_by">网站由</span> <a href="https://github.com/fishcpy" target="_blank" class="footer-link">fishcpy</a> <span data-i18n="footer.built">构建</span>
+                        <span class="separator">|</span>
+                        <span data-i18n="footer.build_time">构建时间:</span> <span class="build-time"></span>
+                    </p>
+                    <p>
+                        <a href="https://github.com/Hex-Dragon/PCL2" target="_blank" class="footer-link" data-i18n="footer.based_on">
+                            PCL2 社区版基于龙腾猫跃 PCL2 构建
+                        </a>
+                    </p>
+                </div>
+                <div class="language-selector">
+                    <a href="#" class="footer-link lang-switch" data-lang="zh" data-i18n="footer.language">简体中文</a>
+                    <span class="separator">|</span>
+                    <a href="#" class="footer-link lang-switch" data-lang="en" data-i18n="footer.language.switch">English</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- 移动端菜单交互脚本 -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.getElementById('menuToggle');
-            const navMenu = document.getElementById('navMenu');
-            
-            if (menuToggle && navMenu) {
-                menuToggle.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    navMenu.classList.toggle('active');
-                });
-                
-                // 点击菜单项后关闭菜单
-                const menuItems = navMenu.querySelectorAll('a');
-                menuItems.forEach(item => {
-                    item.addEventListener('click', function() {
-                        if (window.innerWidth <= 768) {
-                            navMenu.classList.remove('active');
-                        }
-                    });
-                });
-                
-                // 点击页面其他区域关闭菜单
-                document.addEventListener('click', function(e) {
-                    if (navMenu.classList.contains('active') && 
-                        !navMenu.contains(e.target) && 
-                        !menuToggle.contains(e.target)) {
-                        navMenu.classList.remove('active');
-                    }
-                });
-            }
-        });
-    </script>
+
 </body>
 </html>
