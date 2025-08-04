@@ -284,7 +284,19 @@ class PjaxManager {
     animateCounters() {
         const counters = document.querySelectorAll('.stat-number');
         counters.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-target') || counter.textContent);
+            // 检查是否有data-target属性，如果没有则跳过动画
+            const dataTarget = counter.getAttribute('data-target');
+            if (!dataTarget) {
+                // 如果没有data-target属性，说明这是静态文本（如10K+, 100%, 24/7），不需要动画
+                return;
+            }
+            
+            const target = parseInt(dataTarget);
+            if (isNaN(target)) {
+                // 如果data-target不是有效数字，跳过动画
+                return;
+            }
+            
             const duration = 2000;
             const step = target / (duration / 16);
             let current = 0;
