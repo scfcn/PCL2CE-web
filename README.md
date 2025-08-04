@@ -8,8 +8,7 @@
 </div>
 
 # 预览
-主节点：www.pcl2ce.dpdns.org (推荐大陆用户使用)<br>
-cloudflare CDN: cf.pcl2ce.dpdns.org<br>
+主节点：pclce-web.demo.fis.ink (推荐大陆用户使用)<br>
 
 # 关于下载
 
