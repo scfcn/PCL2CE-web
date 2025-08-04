@@ -191,15 +191,33 @@ p {
     color: var(--white);
 }
 
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    padding: 0.5rem 0.75rem;
+}
+
+.brand-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
 .logo {
     width: 40px;
     height: 40px;
     border-radius: var(--border-radius);
+    transition: var(--transition);
 }
 
 .brand-text {
     font-size: 1.25rem;
     font-weight: 600;
+    transition: var(--transition);
 }
 
 .nav-menu {
