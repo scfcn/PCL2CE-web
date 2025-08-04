@@ -1,6 +1,6 @@
 :root {
-    --primary: #2ecc71;
-    --primary-dark: #27ae60;
+    --primary: #3498db;
+    --primary-dark: #2980b9;
     --secondary: #3498db;
     --accent: #e74c3c;
     --dark: #1a1a1a;
@@ -216,6 +216,7 @@ p {
     background: var(--gradient-hero);
     position: relative;
     overflow: hidden;
+    padding-top: 80px;
 }
 
 .hero::before {
@@ -883,25 +884,71 @@ p {
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 0;
         right: -100%;
-        width: 250px;
-        height: calc(100vh - 70px);
-        background: rgba(26, 26, 26, 0.95);
+        width: 100vw;
+        height: 100vh;
+        background: rgba(26, 26, 26, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: center;
         padding: 2rem;
         transition: var(--transition);
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        gap: 3rem;
+        z-index: 9999;
     }
     
     .nav-menu.active {
         right: 0;
     }
     
+    .nav-menu .nav-link {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--white);
+        padding: 1rem 2rem;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        text-align: center;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .nav-menu .nav-link:hover {
+        background: rgba(52, 152, 219, 0.2);
+        color: var(--primary);
+    }
+    
+    .nav-menu .github-link {
+        background: rgba(52, 152, 219, 0.1);
+        border: 2px solid var(--primary);
+        padding: 1rem;
+        width: auto;
+        max-width: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav-menu .github-link svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .nav-menu .github-link:hover {
+        background: var(--primary);
+        color: var(--white);
+    }
+    
     .menu-toggle {
         display: flex;
+        z-index: 10000;
+    }
+    
+    .hero {
+        padding-top: 200px;
     }
     
     .hero-content {
@@ -976,6 +1023,10 @@ p {
 }
 
 @media (max-width: 480px) {
+    .hero {
+        padding-top: 220px;
+    }
+    
     .hero-buttons {
         flex-direction: column;
         width: 100%;
@@ -1058,12 +1109,12 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--primary);
+    background: #3498db;
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
+    background: #2980b9;
 }
 
 /* 下载页面专用样式 */
@@ -1108,7 +1159,7 @@ html {
 
 .version-card:last-child:hover {
     border-color: var(--primary);
-    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
 }
 
 .version-header {
@@ -1138,9 +1189,9 @@ html {
 }
 
 .version-tag.stable {
-    background: rgba(46, 204, 113, 0.2);
-    color: #2ecc71;
-    border: 1px solid rgba(46, 204, 113, 0.3);
+    background: rgba(33, 150, 243, 0.2);
+    color: #2196F3;
+    border: 1px solid rgba(33, 150, 243, 0.3);
 }
 
 .version-tag.preview {
@@ -1164,7 +1215,7 @@ html {
 .download-btn:hover {
     transform: translateY(-2px);
     background: var(--primary-dark);
-    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
 }
 
 .preview-btn {
@@ -1223,8 +1274,8 @@ html {
 
 /* dl.html 页面专用样式 */
 .dl-page {
-    --primary: #2ecc71;
-    --secondary: #27ae60;
+    --primary: #2196F3;
+    --secondary: #1976D2;
     --preview-primary: #f1c40f;
     --preview-secondary: #f39c12;
     --glass-dark: rgba(16, 24, 39, 0.9);
@@ -1273,7 +1324,7 @@ html {
 
 .dl-page .version-card:last-child:hover {
     border-color: var(--primary);
-    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
 }
 
 .dl-page .version-header {
@@ -1303,9 +1354,9 @@ html {
 }
 
 .dl-page .version-tag.stable {
-    background: rgba(46, 204, 113, 0.2);
-    color: #2ecc71;
-    border: 1px solid rgba(46, 204, 113, 0.3);
+    background: rgba(33, 150, 243, 0.2);
+    color: #2196F3;
+    border: 1px solid rgba(33, 150, 243, 0.3);
 }
 
 .dl-page .version-tag.preview {
@@ -1329,7 +1380,7 @@ html {
 .dl-page .download-btn:hover {
     transform: translateY(-2px);
     background: var(--secondary);
-    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
 }
 
 .dl-page .download-grid {
