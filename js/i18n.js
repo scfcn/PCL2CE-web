@@ -37,7 +37,7 @@ class I18n {
                 'nav.lang.zh': '中',
                 'nav.lang.en': 'EN',
                 
-                // 品牌名称
+                // 名称
                 'brand.name': 'PCL2 社区版',
                 'brand.tagline': '开源免费的 Minecraft 启动器',
                 
@@ -200,7 +200,7 @@ class I18n {
                 'nav.lang.zh': '中',
                 'nav.lang.en': 'EN',
                 
-                // 品牌名称
+                // 名称
                 'brand.name': 'PCL2 Community Edition',
                 'brand.tagline': 'Open-source and free Minecraft launcher',
                 
