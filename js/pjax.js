@@ -137,8 +137,9 @@ class PjaxManager {
 
         // 重新初始化国际化
         if (window.i18n) {
-            window.i18n.applyTranslations();
-            window.i18n.updateLanguageToggle();
+            window.i18n.updatePageContent();
+            window.i18n.updateLanguageSelector();
+            window.i18n.bindLanguageToggle();
         }
 
         // 重新初始化构建时间
@@ -183,6 +184,9 @@ class PjaxManager {
     reinitializePageFeatures() {
         const currentPath = window.location.pathname;
 
+        // 移除所有页面特定类
+        document.documentElement.classList.remove('dl-page');
+
         // 首页特定功能
         if (currentPath === '/' || currentPath === '/index.html') {
             this.initializeHomePage();
@@ -191,6 +195,10 @@ class PjaxManager {
         // 下载页面特定功能
         if (currentPath.includes('download.html') || currentPath.includes('dl.html')) {
             this.initializeDownloadPage();
+            // 为dl.html页面添加特定类
+            if (currentPath.includes('dl.html')) {
+                document.documentElement.classList.add('dl-page');
+            }
         }
     }
 
