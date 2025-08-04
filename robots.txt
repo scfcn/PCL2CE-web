@@ -14,4 +14,3 @@ Disallow: /css/
 Allow: /index.html
 Allow: /dl.html
 Allow: /download.html
-Allow: /404.html
