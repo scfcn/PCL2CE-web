@@ -28,7 +28,7 @@ class I18n {
         return {
             zh: {
                 // 导航栏
-                'nav.brand': 'PCL2 社区版',
+                'nav.brand': 'PCL 社区版',
                 'nav.home': '首页',
                 'nav.features': '功能特性',
                 'nav.download': '下载',
@@ -38,11 +38,11 @@ class I18n {
                 'nav.lang.en': 'EN',
                 
                 // 名称
-                'brand.name': 'PCL2 社区版',
+                'brand.name': 'PCL 社区版',
                 'brand.tagline': '开源免费的 Minecraft 启动器',
                 
                 // 首页标题
-                'hero.title': 'PCL2 社区版',
+                'hero.title': 'PCL 社区版',
                 'hero.subtitle': '开源免费的 Minecraft 启动器',
                 'hero.description': '强大的 Minecraft 启动器，提供最佳的游戏体验。支持多版本管理、模组管理、账户管理等功能。',
                 'hero.download': '立即下载',
@@ -54,12 +54,12 @@ class I18n {
                 'stats.community': '社区支持',
                 
                 // 演示部分
-                'demo.title': 'PCL2 社区版演示视频',
-                'demo.description': '观看演示视频，了解 PCL2 社区版的强大功能',
+                'demo.title': 'PCL 社区版演示视频',
+                'demo.description': '观看演示视频，了解 PCL 社区版的强大功能',
                 
                 // 功能特性
                 'features.title': '功能特性',
-                'features.description': 'PCL2 社区版提供全面的 Minecraft 游戏管理体验',
+                'features.description': 'PCL 社区版提供全面的 Minecraft 游戏管理体验',
                 'features.crash.title': '智能崩溃分析',
                 'features.crash.description': '自动分析游戏崩溃原因，提供解决方案',
                 'features.crash.item1': '自动检测常见问题',
@@ -88,7 +88,7 @@ class I18n {
                 
                 // 界面预览
                 'screenshots.title': '界面预览',
-                'screenshots.description': '直观了解 PCL2 社区版的界面设计和功能布局',
+                'screenshots.description': '直观了解 PCL 社区版的界面设计和功能布局',
                 'screenshots.main.title': '主界面',
                 'screenshots.main.description': '简洁直观的主界面设计，让所有功能一目了然。支持深色主题切换。',
                 'screenshots.main.item2': '直观的操作体验',
@@ -110,7 +110,7 @@ class I18n {
                 'download.latest': '下载最新版',
                 'download.all_versions': '查看所有版本',
 
-                'download.card.title': 'PCL2 社区版',
+                'download.card.title': 'PCL 社区版',
                 'download.card.subtitle': '社区版',
                 'download.card.tag1': '开源免费',
                 'download.card.tag2': '智能管理',
@@ -125,7 +125,7 @@ class I18n {
                 'about.stat2.description': '开源透明，安全无忧',
                 
                 // 页脚
-                'footer.brand': 'PCL2 社区版',
+                'footer.brand': 'PCL 社区版',
                 'footer.tagline': '开源免费的 Minecraft 启动器',
                 'footer.description': '基于龙腾猫跃 PCL2 构建的社区版本，为 Minecraft 玩家提供最好的游戏体验。',
                 'footer.quicklinks': '快速链接',
@@ -134,7 +134,7 @@ class I18n {
                 'footer.download': '下载',
                 'footer.about': '关于我们',
                 'footer.about.title': '关于项目',
-                'footer.about.description': 'PCL2 社区版是基于龙腾猫跃 PCL2 的开源 Minecraft 启动器',
+                'footer.about.description': 'PCL 社区版是基于龙腾猫跃 PCL2 的开源 Minecraft 启动器',
                 'footer.resources': '资源下载',
                 'footer.resources.title': '资源',
                 'footer.latest': '最新版本',
@@ -156,13 +156,13 @@ class I18n {
                 'footer.built_by': '网站由',
                 'footer.built': '构建',
                 'footer.build_time': '构建时间:',
-                'footer.based_on': 'PCL2 社区版基于龙腾猫跃 PCL2 构建',
+                'footer.based_on': 'PCL 社区版基于龙腾猫跃 PCL 构建',
                 'footer.language': '简体中文',
                 'footer.language.switch': 'English',
                 
                 // 下载页面
-                'download.title': '下载 PCL2 社区版 | 开源免费的Minecraft启动器',
-                'dl.title': 'PCL2 社区版下载',
+                'download.title': '下载 PCL 社区版 | 开源免费的Minecraft启动器',
+                'dl.title': 'PCL 社区版下载',
                 'dl.stable': '最新稳定版',
                 'dl.instruction.step1': '按 Win + S 打开搜索，搜索"系统信息"并打开。',
                 'dl.instruction.step2': '查看系统类型：',
@@ -180,7 +180,7 @@ class I18n {
                 'dl.mirror.2': '镜像 2',
                 'dl.mirror.github': 'GitHub（国内可能较慢）',
                 'dl.history.title': '历史版本下载',
-                'dl.history.desc': '如果您需要 PCL2 社区版的旧版本，可以从以下链接下载：',
+                'dl.history.desc': '如果您需要 PCL 社区版的旧版本，可以从以下链接下载：',
                 'dl.history.link': '历史版本',
                 
                 // 404页面
@@ -191,7 +191,7 @@ class I18n {
             },
             en: {
                 // 导航栏
-                'nav.brand': 'PCL2 Community Edition',
+                'nav.brand': 'PCL Community Edition',
                 'nav.home': 'Home',
                 'nav.features': 'Features',
                 'nav.download': 'Download',
@@ -201,11 +201,11 @@ class I18n {
                 'nav.lang.en': 'EN',
                 
                 // 名称
-                'brand.name': 'PCL2 Community Edition',
+                'brand.name': 'PCL Community Edition',
                 'brand.tagline': 'Open-source and free Minecraft launcher',
                 
                 // 首页标题
-                'hero.title': 'PCL2 Community Edition',
+                'hero.title': 'PCL Community Edition',
                 'hero.subtitle': 'Open Source Free Minecraft Launcher',
                 'hero.description': 'Powerful Minecraft launcher, providing the best gaming experience. Support multiple versions, mod management, account management and more.',
                 'hero.download': 'Download Latest',
@@ -217,12 +217,12 @@ class I18n {
                 'stats.community': 'Community Support',
                 
                 // 演示部分
-                'demo.title': 'PCL2 Community Edition Demo Video',
-                'demo.description': 'Watch the demo video to learn about the powerful features of PCL2 Community Edition',
+                'demo.title': 'PCL Community Edition Demo Video',
+                'demo.description': 'Watch the demo video to learn about the powerful features of PCL Community Edition',
                 
                 // 功能特性
                 'features.title': 'Features',
-                'features.description': 'PCL2 Community Edition provides comprehensive Minecraft game management experience',
+                'features.description': 'PCL Community Edition provides comprehensive Minecraft game management experience',
                 'features.crash.title': 'Smart Crash Analysis',
                 'features.crash.description': 'Automatically analyze game crash causes and provide solutions',
                 'features.crash.item1': 'Auto-detect common issues',
@@ -251,7 +251,7 @@ class I18n {
                 
                 // 界面预览
                 'screenshots.title': 'Interface Preview',
-                'screenshots.description': 'Intuitively understand the interface design and functional layout of PCL2 Community Edition',
+                'screenshots.description': 'Intuitively understand the interface design and functional layout of PCL Community Edition',
                 'screenshots.main.title': 'Main Interface',
                 'screenshots.main.description': 'A simple and intuitive main interface design makes all functions easy to understand at a glance. Supports dark theme switching.',
                 'screenshots.main.item2': 'Intuitive operation experience',
@@ -273,7 +273,7 @@ class I18n {
                 'download.latest': 'Download Latest',
                 'download.all_versions': 'View All Versions',
 
-                'download.card.title': 'PCL2 Community Edition',
+                'download.card.title': 'PCL Community Edition',
                 'download.card.subtitle': 'Community Edition',
                 'download.card.tag1': 'Open Source & Free',
                 'download.card.tag2': 'Smart Management',
@@ -297,7 +297,7 @@ class I18n {
                 'footer.download': 'Download',
                 'footer.about': 'About',
                 'footer.about.title': 'About Project',
-                'footer.about.description': 'PCL2 Community Edition is an open-source Minecraft launcher based on LTCat PCL2',
+                'footer.about.description': 'PCL Community Edition is an open-source Minecraft launcher based on LTCat PCL2',
                 'footer.resources': 'Resources',
                 'footer.resources.title': 'Resources',
                 'footer.latest': 'Latest Version',
@@ -319,11 +319,11 @@ class I18n {
                 'footer.built_by': 'Website built by',
                 'footer.built': 'built',
                 'footer.build_time': 'Build time:',
-                'footer.based_on': 'PCL2 Community Edition based on LTCat PCL2',
+                'footer.based_on': 'PCL Community Edition based on LTCat PCL',
                 
                 // 下载页面
-                'download.title': 'Download PCL2 Community Edition | Open Source Free Minecraft Launcher',
-                'dl.title': 'PCL2 Community Edition Download',
+                'download.title': 'Download PCL Community Edition | Open Source Free Minecraft Launcher',
+                'dl.title': 'PCL Community Edition Download',
                 'dl.stable': 'Latest Stable Version',
                 'dl.instruction.step1': 'Press Win + S to open search, search for System Information and open it.',
                 'dl.instruction.step2': 'Check System Type:',
@@ -341,7 +341,7 @@ class I18n {
                 'dl.mirror.2': 'Mirror 2',
                 'dl.mirror.github': 'GitHub (may be slow in China)',
                 'dl.history.title': 'Historical Versions Download',
-                'dl.history.desc': 'If you need older versions of PCL2 Community Edition, you can download from the following links:',
+                'dl.history.desc': 'If you need older versions of PCL Community Edition, you can download from the following links:',
                 'dl.history.link': 'Historical Versions',
                 
                 // 404页面
