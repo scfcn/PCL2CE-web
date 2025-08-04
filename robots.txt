@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://pclce-web.demo.fis.ink/sitemap.xml
+
+# Disallow crawling of certain file types
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: /js/
+Disallow: /css/
+
+# Allow crawling of main pages
+Allow: /index.html
+Allow: /dl.html
+Allow: /download.html
+Allow: /404.html
