@@ -28,14 +28,28 @@
             gap: 3rem;
         }
         .version-card {
-            background: var(--glass-dark);
-            backdrop-filter: blur(8px);
-            border: 1px solid transparent;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur-strong);
+            border: 1px solid var(--glass-border);
             border-radius: 1rem;
             padding: 2rem;
             width: 100%;
             max-width: 800px;
             transition: var(--transition);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .version-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.05) 100%);
+            pointer-events: none;
+            border-radius: 1rem;
         }
 
         .version-card:hover {
@@ -185,8 +199,10 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <img src="./img/logo.ico" alt="PCL Logo" class="logo">
-                <span class="brand-text" data-i18n="brand.name">PCL 社区版</span>
+                <a href="./index.html" class="brand-link">
+                    <img src="./img/logo.ico" alt="PCL Logo" class="logo">
+                    <span class="brand-text" data-i18n="brand.name">PCL 社区版</span>
+                </a>
             </div>
             
             <div class="nav-menu" id="navMenu">
