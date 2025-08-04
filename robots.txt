@@ -11,6 +11,6 @@ Disallow: /js/
 Disallow: /css/
 
 # Allow crawling of main pages
-Allow: /index.html
+Allow: /
 Allow: /dl.html
 Allow: /download.html
