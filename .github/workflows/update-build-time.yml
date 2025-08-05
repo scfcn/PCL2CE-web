@@ -9,6 +9,8 @@ jobs:
   update-build-time:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    permissions:
+      contents: write
     
     steps:
     - name: Checkout repository
