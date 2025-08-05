@@ -46,25 +46,72 @@ function initSmoothScroll() {
     });
 }
 
+// 检测是否为桌面设备
+function isDesktop() {
+    return window.innerWidth > 768 && !('ontouchstart' in window);
+}
+
+
+
 // 动态光标效果增强
 function initCursorEffects() {
+    // 只在桌面设备上启用鼠标跟随效果
+    if (!isDesktop()) return;
+    
     document.querySelectorAll('[data-cursor-effect]').forEach(element => {
-        element.addEventListener('mousemove', (e) => {
-            const rect = element.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+        let isAnimating = false;
+        let lastTime = 0;
+        
+        // 缓存元素尺寸，避免重复计算
+        let cachedRect = null;
+        let rectUpdateTime = 0;
+        
+        const updateRect = () => {
+            const now = Date.now();
+            if (!cachedRect || now - rectUpdateTime > 100) {
+                cachedRect = element.getBoundingClientRect();
+                rectUpdateTime = now;
+            }
+            return cachedRect;
+        };
+        
+        const handleMouseMove = (e) => {
+            const now = performance.now();
+            if (now - lastTime < 33) return; // 限制到30fps
+            lastTime = now;
             
-            // 3D 变换效果
-            element.style.transform = `
-                perspective(1000px) 
-                rotateX(${(y - rect.height/2)/20}deg) 
-                rotateY(${-(x - rect.width/2)/20}deg)
-                translateZ(10px)
-            `;
-        });
+            if (isAnimating) return;
+            isAnimating = true;
+            
+            requestAnimationFrame(() => {
+                const rect = updateRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (element.classList.contains('hero-image-container')) {
+                    // 进一步简化计算
+                    const centerX = rect.width >> 1; // 使用位运算
+                    const centerY = rect.height >> 1;
+                    const rotateX = 5 + (y - centerY) * 0.05;
+                    const rotateY = -5 - (x - centerX) * 0.05;
+                    
+                    // 使用transform3d强制GPU加速
+                    element.style.transform = `translate3d(0,0,8px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                }
+                isAnimating = false;
+            });
+        };
+        
+        element.addEventListener('mousemove', handleMouseMove, { passive: true });
 
         element.addEventListener('mouseleave', () => {
-            element.style.transform = 'none';
+            element.style.transform = '';
+            cachedRect = null;
+        });
+        
+        // 窗口大小改变时清除缓存
+        window.addEventListener('resize', () => {
+            cachedRect = null;
         });
     });
 }

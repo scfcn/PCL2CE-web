@@ -394,11 +394,15 @@ p {
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     box-shadow: var(--glass-shadow-hover);
-    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-    transition: var(--transition);
+    transform: translate3d(0,0,5px) perspective(1000px) rotateY(-5deg) rotateX(5deg);
+    transition: box-shadow 0.3s ease;
+    cursor: pointer;
     border: 2px solid var(--glass-border);
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
+    will-change: transform;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
 }
 
 .hero-image-container:hover {
@@ -1503,6 +1507,17 @@ p {
 .animate-scale-in.animate-in {
     opacity: 1;
     transform: scale(1);
+}
+
+/* 特殊处理hero-image-container的动画，保持倾斜效果 */
+.hero-image-container.animate-scale-in {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg) scale(0.8);
+}
+
+.hero-image-container.animate-scale-in.animate-in {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg) scale(1);
 }
 
 /* 延迟动画 */
