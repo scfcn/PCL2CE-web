@@ -69,8 +69,8 @@ function initCursorEffects() {
     });
 }
 
-// 图片懒加载动画
-function initLazyLoading() {
+// 渐入动画系统
+function initScrollAnimations() {
     // 清理之前的observer
     if (observer) {
         observer.disconnect();
@@ -78,21 +78,62 @@ function initLazyLoading() {
     
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
+        rootMargin: '0px 0px -50px 0px',
         threshold: 0.1
     };
 
-    observer = new IntersectionObserver((entries, observer) => {
+    observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
+                entry.target.classList.add('animate-in');
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-        observer.observe(img);
+    // 观察所有需要动画的元素
+    const animateElements = document.querySelectorAll(`
+        .animate-on-scroll,
+        .animate-fade-in,
+        .animate-slide-up,
+        .animate-slide-left,
+        .animate-slide-right,
+        .animate-scale-in,
+        img[loading="lazy"]
+    `);
+
+    animateElements.forEach(element => {
+        // 为懒加载图片添加默认动画类
+        if (element.tagName === 'IMG' && element.hasAttribute('loading')) {
+            element.classList.add('animate-fade-in');
+        }
+        observer.observe(element);
+    });
+}
+
+// 页面加载动画
+function initPageLoadAnimation() {
+    // 为body添加页面进入动画
+    document.body.classList.add('page-enter');
+    
+    // 为主要区块添加渐入动画
+    const mainSections = document.querySelectorAll(`
+        .hero,
+        .features,
+        .screenshots,
+        .about,
+        .footer,
+        .download-container,
+        .version-card
+    `);
+    
+    mainSections.forEach((section, index) => {
+        if (section && !section.classList.contains('animate-on-scroll')) {
+            section.classList.add('animate-on-scroll');
+            if (index > 0) {
+                section.classList.add(`animate-delay-${Math.min(index, 6)}`);
+            }
+        }
     });
 }
 
@@ -161,14 +202,24 @@ function initMobileMenu() {
     }
 }
 
+// 更新当前年份
+function updateCurrentYear() {
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+}
+
 // 初始化所有功能
 function initializeAll() {
     initVideoControl();
     initSmoothScroll();
     initCursorEffects();
-    initLazyLoading();
+    initPageLoadAnimation();
+    initScrollAnimations();
     initTheme();
     initMobileMenu();
+    updateCurrentYear();
 }
 
 // 优化滚动性能（只需要初始化一次）
