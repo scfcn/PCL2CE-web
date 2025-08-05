@@ -163,6 +163,20 @@ function initPageLoadAnimation() {
     // 为body添加页面进入动画
     document.body.classList.add('page-enter');
     
+    // 立即触发导航栏元素的动画
+    const navElements = document.querySelectorAll(`
+        .navbar .animate-fade-in,
+        .navbar .animate-slide-left,
+        .navbar .animate-slide-right,
+        .navbar .animate-scale-in
+    `);
+    
+    navElements.forEach((element, index) => {
+        setTimeout(() => {
+            element.classList.add('animate-in');
+        }, index * 100); // 每个元素延迟100ms
+    });
+    
     // 为主要区块添加渐入动画
     const mainSections = document.querySelectorAll(`
         .hero,
@@ -193,6 +207,83 @@ function initTheme() {
     document.documentElement.setAttribute('data-theme', savedTheme);
 }
 
+// 语言切换功能
+function initLanguageSelector() {
+    const languageToggle = document.getElementById('languageToggle');
+    const languageDropdown = document.getElementById('languageDropdown');
+    const currentLangSpan = document.getElementById('currentLang');
+    const languageOptions = document.querySelectorAll('.language-option');
+    
+    if (!languageToggle || !languageDropdown) return;
+    
+    // 语言名称映射
+    const languageNames = {
+        'zh': '🇨🇳 简体中文',
+        'en': '🇺🇸 English'
+    };
+    
+    // 初始化当前语言显示
+    function updateCurrentLanguage() {
+        const currentLang = window.i18n ? window.i18n.currentLang : 'zh';
+        if (currentLangSpan) {
+            currentLangSpan.textContent = languageNames[currentLang] || '简体中文';
+        }
+        
+        // 更新选项的激活状态
+        languageOptions.forEach(option => {
+            const lang = option.getAttribute('data-lang');
+            option.classList.toggle('active', lang === currentLang);
+        });
+    }
+    
+    // 切换下拉菜单显示
+    function toggleDropdown() {
+        const isShow = languageDropdown.classList.contains('show');
+        languageDropdown.classList.toggle('show', !isShow);
+        languageToggle.classList.toggle('active', !isShow);
+    }
+    
+    // 点击切换按钮
+    languageToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleDropdown();
+    });
+    
+    // 点击语言选项
+    languageOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const selectedLang = option.getAttribute('data-lang');
+            
+            if (window.i18n && selectedLang !== window.i18n.currentLang) {
+                window.i18n.setLanguage(selectedLang);
+                updateCurrentLanguage();
+            }
+            
+            // 关闭下拉菜单
+            languageDropdown.classList.remove('show');
+            languageToggle.classList.remove('active');
+        });
+    });
+    
+    // 点击其他地方关闭下拉菜单
+    document.addEventListener('click', () => {
+        languageDropdown.classList.remove('show');
+        languageToggle.classList.remove('active');
+    });
+    
+    // 阻止下拉菜单内部点击事件冒泡
+    languageDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+    
+    // 初始化显示
+    updateCurrentLanguage();
+    
+    // 监听语言变化事件
+    document.addEventListener('languageChanged', updateCurrentLanguage);
+}
+
 // 高级主题切换
 function toggleTheme() {
     const body = document.body;
@@ -214,21 +305,30 @@ function initMobileMenu() {
         const newMenuToggle = menuToggle.cloneNode(true);
         menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
         
+        function toggleMenu() {
+            const isActive = navMenu.classList.contains('active');
+            navMenu.classList.toggle('active');
+            newMenuToggle.classList.toggle('active');
+            
+            // 防止背景滚动
+            document.body.style.overflow = isActive ? '' : 'hidden';
+        }
+        
+        function closeMenu() {
+            navMenu.classList.remove('active');
+            newMenuToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
         newMenuToggle.addEventListener('click', function(e) {
             e.stopPropagation();
-            navMenu.classList.toggle('active');
-            
-            // 切换汉堡菜单图标
-            const spans = newMenuToggle.querySelectorAll('span');
-            if (navMenu.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                spans.forEach(span => {
-                    span.style.transform = '';
-                    span.style.opacity = '';
-                });
+            toggleMenu();
+        });
+        
+        // 点击菜单外部关闭菜单
+        navMenu.addEventListener('click', function(e) {
+            if (e.target === navMenu) {
+                closeMenu();
             }
         });
         
@@ -237,14 +337,16 @@ function initMobileMenu() {
         menuItems.forEach(item => {
             item.addEventListener('click', function() {
                 if (window.innerWidth <= 768) {
-                    navMenu.classList.remove('active');
-                    const spans = newMenuToggle.querySelectorAll('span');
-                    spans.forEach(span => {
-                        span.style.transform = '';
-                        span.style.opacity = '';
-                    });
+                    closeMenu();
                 }
             });
+        });
+        
+        // ESC键关闭菜单
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                closeMenu();
+            }
         });
     }
 }
@@ -265,6 +367,7 @@ function initializeAll() {
     initPageLoadAnimation();
     initScrollAnimations();
     initTheme();
+    initLanguageSelector();
     initMobileMenu();
     updateCurrentYear();
 }

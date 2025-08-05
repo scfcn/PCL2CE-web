@@ -374,7 +374,15 @@ class I18n {
             window.dispatchEvent(new CustomEvent('languageChanged', { 
                 detail: { language: lang } 
             }));
+            
+            // 触发自定义事件
+            document.dispatchEvent(new CustomEvent('languageChanged'));
         }
+    }
+    
+    // 设置语言（别名方法）
+    setLanguage(lang) {
+        this.switchLanguage(lang);
     }
 
     // 更新页面内容
