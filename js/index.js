@@ -699,8 +699,6 @@ function initDontClickButton() {
             const messages = [
                 '我说了千万别点！',
                 '警告：请勿继续点击！',
-                '你真的很调皮呢！',
-                '再点就要出大事了！',
                 '还敢再点吗？'
             ];
             
