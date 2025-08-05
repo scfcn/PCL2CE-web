@@ -1,0 +1,74 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        ref: ${{ github.head_ref || github.ref }}
+        
+    - name: Set up timezone
+      run: |
+        sudo timedatectl set-timezone Asia/Shanghai
+        
+    - name: Update build time
+      run: |
+        # 获取当前日期时间
+        BUILD_TIME=$(date '+%Y.%-m.%-d %H:%M:%S')
+        echo "Updating build time to: $BUILD_TIME"
+        
+        # 更新 buildTime.js 文件
+        sed -i "s/const BUILD_TIME = '.*';/const BUILD_TIME = '$BUILD_TIME';/" js/buildTime.js
+        
+        # 验证更新
+        echo "Updated buildTime.js:"
+        cat js/buildTime.js | head -1
+        
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '.'
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+      
+    - name: Commit build time changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        if ! git diff --quiet js/buildTime.js; then
+          git add js/buildTime.js
+          BUILD_TIME=$(date '+%Y.%-m.%-d %H:%M:%S')
+          git commit -m "🤖 Auto update build time to $BUILD_TIME"
+          git push
+          echo "Build time updated and committed: $BUILD_TIME"
+        else
+          echo "No changes to build time"
+        fi
