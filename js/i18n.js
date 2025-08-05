@@ -189,7 +189,10 @@ class I18n {
                 '404.title': '页面未找到',
                 '404.description': '抱歉，您访问的页面不存在或已被移动。',
                 '404.back': '返回首页',
-                '404.download': '前往下载'
+                '404.download': '前往下载',
+                
+                // 千万别点按钮
+                'dont.click': '千万别点'
             },
             en: {
                 // 导航栏
@@ -353,6 +356,9 @@ class I18n {
                 '404.description': 'Sorry, the page you are looking for does not exist or has been moved.',
                 '404.back': 'Back to Home',
                 '404.download': 'Go to Download',
+                
+                // 千万别点按钮
+                'dont.click': 'DON\'T CLICK',
                 
                 'footer.language': 'English',
                 'footer.language.switch': '简体中文'
