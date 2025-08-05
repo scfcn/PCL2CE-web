@@ -157,6 +157,8 @@ class I18n {
                 'footer.built': '构建',
                 'footer.build_time': '构建时间:',
                 'footer.based_on': 'PCL 社区版基于龙腾猫跃 PCL 构建',
+                'footer.copyright': '© PCL Community 2025-2025 版权所有',
+                'footer.trademark': '"Minecraft" 以及 "我的世界" 为美国微软公司的商标。PCLCE 和本网站与美国微软公司之间没有从属关系。',
                 'footer.language': '简体中文',
                 'footer.language.switch': 'English',
                 
@@ -320,6 +322,8 @@ class I18n {
                 'footer.built': 'built',
                 'footer.build_time': 'Build time:',
                 'footer.based_on': 'PCL Community Edition based on LTCat PCL',
+                'footer.copyright': '© PCL Community 2025-2025 All Rights Reserved',
+                'footer.trademark': '"Minecraft" and "我的世界" are trademarks of Microsoft Corporation in the United States. PCLCE and this website are not affiliated with Microsoft Corporation.',
                 
                 // 下载页面
                 'download.title': 'Download PCL Community Edition | Open Source Free Minecraft Launcher',
