@@ -157,6 +157,8 @@ class I18n {
                 'footer.built': '构建',
                 'footer.build_time': '构建时间:',
                 'footer.based_on': 'PCL 社区版基于龙腾猫跃 PCL 构建',
+                'footer.copyright': '© PCL Community 2025-2025 版权所有',
+                'footer.trademark': '"Minecraft" 以及 "我的世界" 为美国微软公司的商标。PCLCE 和本网站与美国微软公司之间没有从属关系。',
                 'footer.language': '简体中文',
                 'footer.language.switch': 'English',
                 
@@ -187,7 +189,10 @@ class I18n {
                 '404.title': '页面未找到',
                 '404.description': '抱歉，您访问的页面不存在或已被移动。',
                 '404.back': '返回首页',
-                '404.download': '前往下载'
+                '404.download': '前往下载',
+                
+                // 千万别点按钮
+                'dont.click': '千万别点'
             },
             en: {
                 // 导航栏
@@ -320,6 +325,8 @@ class I18n {
                 'footer.built': 'built',
                 'footer.build_time': 'Build time:',
                 'footer.based_on': 'PCL Community Edition based on LTCat PCL',
+                'footer.copyright': '© PCL Community 2025-2025 All Rights Reserved',
+                'footer.trademark': '"Minecraft" and "我的世界" are trademarks of Microsoft Corporation in the United States. PCLCE and this website are not affiliated with Microsoft Corporation.',
                 
                 // 下载页面
                 'download.title': 'Download PCL Community Edition | Open Source Free Minecraft Launcher',
@@ -350,6 +357,9 @@ class I18n {
                 '404.back': 'Back to Home',
                 '404.download': 'Go to Download',
                 
+                // 千万别点按钮
+                'dont.click': 'DON\'T CLICK',
+                
                 'footer.language': 'English',
                 'footer.language.switch': '简体中文'
             }
@@ -374,7 +384,15 @@ class I18n {
             window.dispatchEvent(new CustomEvent('languageChanged', { 
                 detail: { language: lang } 
             }));
+            
+            // 触发自定义事件
+            document.dispatchEvent(new CustomEvent('languageChanged'));
         }
+    }
+    
+    // 设置语言（别名方法）
+    setLanguage(lang) {
+        this.switchLanguage(lang);
     }
 
     // 更新页面内容
