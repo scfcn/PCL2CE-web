@@ -81,183 +81,283 @@
             </button>
         </div>
 
-        <div class="version-card">
+        <!-- 版本控制面板 -->
+        <div class="version-control-panel">
+            <div class="control-header">
+                <h2 class="control-title" data-i18n="download.versions">版本管理</h2>
+                <div class="control-stats">
+                    <span class="version-count" data-i18n="download.total">共 <span id="totalVersions">4</span> 个版本</span>
+                </div>
+            </div>
+            
+            <div class="control-filters">
+                <div class="filter-group">
+                    <label class="filter-label" data-i18n="download.filter">筛选:</label>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all" data-i18n="download.all">全部</button>
+                        <button class="filter-btn" data-filter="stable" data-i18n="download.stable">稳定版</button>
+                        <button class="filter-btn" data-filter="preview" data-i18n="download.preview">预览版</button>
+                    </div>
+                </div>
+                
+                <div class="search-group">
+                    <div class="search-box">
+                        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                        <input type="text" id="versionSearch" placeholder="搜索版本..." data-i18n-placeholder="download.search">
+                        <button class="search-clear" id="searchClear" style="display: none;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"/>
+                                <line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 版本列表 -->
+        <div class="versions-list" id="versionsList">
+
+        <div class="version-card" data-version="2.10.7" data-type="stable">
             <div class="version-header">
-                <div>
+                <div class="version-info">
                     <div class="version-name">2.10.7</div>
                     <span class="version-tag stable">稳定版</span>
+                    <div class="version-summary">基于主线 2.9.2 制作，支持 Mod 列表多选收藏</div>
                 </div>
-                <div class="version-date">2025-04-20</div>
+                <div class="version-meta">
+                    <div class="version-date">2025-04-20</div>
+                    <button class="expand-btn" data-expanded="false">
+                        <span class="expand-text">查看详情</span>
+                        <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <div class="changelog">
-                <li>此版本基于主线 2.9.2 制作</li>
-                <li>2.11.0 将会合并主线 2.9.3 内容</li>
-
-                <h3>新功能</h3>
-                <ul>
-                    <li> 支持 Mod 列表多选收藏 #443 by @youzi-3222</li>
-                </ul>
-
-                <h3>Bug 修复</h3>
-                <ul>
-                    <li>资源管理查看存档崩溃 by @EncVar</li>
-                    <li>更新 UVMC 服务器地址 #465 by @zkitefly</li>
-                </ul>
-
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.7/PCL_CE_x64.exe" class="download-btn" id="downloadBtn">
+            
+            <div class="version-downloads">
+                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.7/PCL_CE_x64.exe" class="download-btn primary">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
                     </svg>
-                    下载稳定版(x64)
+                    下载 x64
                 </a>
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.7/PCL_CE_ARM64.exe" class="download-btn" id="downloadBtn">
+                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.7/PCL_CE_ARM64.exe" class="download-btn secondary">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
                     </svg>
-                    下载稳定版(ARM64)
+                    下载 ARM64
                 </a>
+            </div>
+
+            <div class="changelog" style="display: none;">
+                <div class="changelog-content">
+                    <div class="changelog-note">
+                        <li>此版本基于主线 2.9.2 制作</li>
+                        <li>2.11.0 将会合并主线 2.9.3 内容</li>
+                    </div>
+
+                    <h3>新功能</h3>
+                    <ul>
+                        <li>支持 Mod 列表多选收藏 #443 by @youzi-3222</li>
+                    </ul>
+
+                    <h3>Bug 修复</h3>
+                    <ul>
+                        <li>资源管理查看存档崩溃 by @EncVar</li>
+                        <li>更新 UVMC 服务器地址 #465 by @zkitefly</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
 
 
-        <div class="version-card">
+        <div class="version-card" data-version="2.10.5" data-type="stable">
             <div class="version-header">
-                <div>
+                <div class="version-info">
                     <div class="version-name">2.10.5</div>
                     <span class="version-tag stable">稳定版</span>
+                    <div class="version-summary">基于主线 2.9.2 制作，支持切换程序字体</div>
                 </div>
-                <div class="version-date">2025-04-04</div>
+                <div class="version-meta">
+                    <div class="version-date">2025-04-04</div>
+                    <button class="expand-btn" data-expanded="false">
+                        <span class="expand-text">查看详情</span>
+                        <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <div class="changelog">
-                <li>此版本基于主线 2.9.2 制作</li>
-
-                <h3>修复</h3>
-                <ul>
-                    <li> 在 Java 列表上滚动鼠标会导致后方页面也滚动的问题 (@tangge233 / #369 )</li>
-                    <li> Cleanroom 选择后错误提示可添加 OptiFine (@tangge233 / #362 )</li>
-                    <li>版本修改功能无法使用 (@tangge233 / #356 )</li>
-                    <li>Mod 更新会更新到不正确的版本 (@tangge233 / #319 )</li>
-                    <li>深色模式下部分控件显示不正确 (@tangge233 / #375 )/li>
-                    <li>大量实时日志下界面会假死 (@tangge233 / #363 )</li>
-                    <li>资源排序按文件名称排序不应当区分大小写 (@MoYuan-CN / #381 )</li>
-                </ul>
-
-                <h3>新功能</h3>
-                <ul>
-                    <li>支持切换程序字体 (@tangge233 )</li>
-                    <li>支持导出资源详细信息 (@tangge233 )</li>
-                </ul>
-
-                <h3>小改动</h3>
-                <ul>
-                    <li>修改了修改页面的风格以便与新 UI 统一 (@tangge233 )</li>
-                    <li>同步资源下载预设版本选择 (@MoYuan-CN )</li>
-                </ul>
-
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.5/PCL_CE_x64.exe" class="download-btn" id="downloadBtn">
+            
+            <div class="version-downloads">
+                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.5/PCL_CE_x64.exe" class="download-btn primary">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
                     </svg>
-                    下载稳定版(x64)
+                    下载 x64
                 </a>
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.5/PCL_CE_ARM64.exe" class="download-btn" id="downloadBtn">
+                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.5/PCL_CE_ARM64.exe" class="download-btn secondary">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
                     </svg>
-                    下载稳定版(ARM64)
+                    下载 ARM64
                 </a>
             </div>
-        </div>
 
+            <div class="changelog" style="display: none;">
+                <div class="changelog-content">
+                    <div class="changelog-note">
+                        <li>此版本基于主线 2.9.2 制作</li>
+                    </div>
 
-    <div class="version-card">
-        <div class="version-header">
-            <div>
-                <div class="version-name">2.10.4</div>
-                <span class="version-tag stable">稳定版</span>
-            </div>
-            <div class="version-date">2025-03-15</div>
-        </div>
-        <div class="changelog">
-            <li>此版本基于主线版本 2.9.1</li>
+                    <h3>修复</h3>
+                    <ul>
+                        <li>在 Java 列表上滚动鼠标会导致后方页面也滚动的问题 (@tangge233 / #369 )</li>
+                        <li>Cleanroom 选择后错误提示可添加 OptiFine (@tangge233 / #362 )</li>
+                        <li>版本修改功能无法使用 (@tangge233 / #356 )</li>
+                        <li>Mod 更新会更新到不正确的版本 (@tangge233 / #319 )</li>
+                        <li>深色模式下部分控件显示不正确 (@tangge233 / #375 )</li>
+                        <li>大量实时日志下界面会假死 (@tangge233 / #363 )</li>
+                        <li>资源排序按文件名称排序不应当区分大小写 (@MoYuan-CN / #381 )</li>
+                    </ul>
 
-            <h3>更新亮点</h3>
-            <ul>
-                <li> 添加了 Cleanroom 自动安装及相关支持</li>
-                <div class="changelog-image">
-                    <img src="./img/releases/2.10.4/2.10.4-1.png" alt="2.10.4 更新预览" loading="lazy">
-                    <li>资源包、光影包的管理实现与 Mod 管理统一，现已支持更新等操作</li>
-                    <img src="./img/releases/2.10.4/2.10.4-2.png" alt="2.10.4 更新预览" loading="lazy">
+                    <h3>新功能</h3>
+                    <ul>
+                        <li>支持切换程序字体 (@tangge233 )</li>
+                        <li>支持导出资源详细信息 (@tangge233 )</li>
+                    </ul>
+
+                    <h3>小改动</h3>
+                    <ul>
+                        <li>修改了修改页面的风格以便与新 UI 统一 (@tangge233 )</li>
+                        <li>同步资源下载预设版本选择 (@MoYuan-CN )</li>
+                    </ul>
                 </div>
-            </ul>
-
-            <h3>新功能</h3>
-            <ul>
-                <li> Cleanroom 自动安装及相关支持 (PR @Pigeon0v0 / #310 )</li>
-                <li> 资源包和光影包管理支持更多操作 (PR @tangge233 / #299 )</li>
-                <li> 复活了内存优化功能 (PR @Hill23333 / #292 )</li>
-                <li> 实验性：允许重置版本以补全部分 Libraries (PR @Pigeon0v0 / #287 )</li>
-            </ul>
-
-            <h3>优化</h3>
-            <ul>
-                <li> 对排序算法进行了优化，现在 Mod 管理不卡了 (@JustQiyi / #285 ; PR @tangge233 / #286 )</li>
-                <li> 自动安装修改现在会同时显示版本的修改前信息和修改后信息 (PR @Pigeon0v0 / #287 )</li>
-            </ul>
-
-            <h3>Bug 修复</h3>
-            <ul>
-                <li> 意外地将 Quilt Mod 更新为 NeoForge 版本 (@Lithum-12 / #296 ; PR @3gf8jv4dv / #298 )</li>
-                <li> 在关闭文件校验选项开启时也始终校验 Libraries (PR @Pigeon0v0 / #310 )</li>
-                <li>在更新通道切换后误认为不是最新版本 (PR @tangge233 / #343 )</li>
-                <li>在浅色模式下实时日志的部分颜色显示不正确 (PR @tangge233 / #335 )</li>
-                <li>由于合并上游导致的默认选择高性能 Java 选项丢失 (PR @tangge233 / d580e42)</li>
-            </ul>
-
-            <h3>技术性更改</h3>
-            <ul>
-                <li>修复更新服务器的链接错误 (PR @Pigeon0v0 / 5d7ac11 )</li>
-            </ul>
+            </div>
         </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.4/PCL_CE.exe" class="download-btn" id="downloadBtn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
-                </svg>
-                下载稳定版(x64)
-            </a>
-        </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.4/PCL_CE_ARM64.exe" class="download-btn" id="downloadBtn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
-                </svg>
-                下载稳定版(ARM64)
-            </a>
-        </div>
-    </div>
 
 
-
-
-
-        <div class="version-card">
+        <div class="version-card" data-version="2.10.4" data-type="stable">
             <div class="version-header">
-                <div>
+                <div class="version-info">
+                    <div class="version-name">2.10.4</div>
+                    <span class="version-tag stable">稳定版</span>
+                    <div class="version-summary">基于主线版本 2.9.1，添加 Cleanroom 自动安装支持</div>
+                </div>
+                <div class="version-meta">
+                    <div class="version-date">2025-03-15</div>
+                    <button class="expand-btn" data-expanded="false">
+                        <span class="expand-text">查看详情</span>
+                        <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="version-downloads">
+                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.4/PCL_CE.exe" class="download-btn primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+                    </svg>
+                    下载 x64
+                </a>
+                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.4/PCL_CE_ARM64.exe" class="download-btn secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+                    </svg>
+                    下载 ARM64
+                </a>
+            </div>
+
+            <div class="changelog" style="display: none;">
+                <div class="changelog-content">
+                    <div class="changelog-note">
+                        <li>此版本基于主线版本 2.9.1</li>
+                    </div>
+
+                    <h3>更新亮点</h3>
+                    <ul>
+                        <li>添加了 Cleanroom 自动安装及相关支持</li>
+                        <div class="changelog-image">
+                            <img src="./img/releases/2.10.4/2.10.4-1.png" alt="2.10.4 更新预览" loading="lazy">
+                            <li>资源包、光影包的管理实现与 Mod 管理统一，现已支持更新等操作</li>
+                            <img src="./img/releases/2.10.4/2.10.4-2.png" alt="2.10.4 更新预览" loading="lazy">
+                        </div>
+                    </ul>
+
+                    <h3>新功能</h3>
+                    <ul>
+                        <li>Cleanroom 自动安装及相关支持 (PR @Pigeon0v0 / #310 )</li>
+                        <li>资源包和光影包管理支持更多操作 (PR @tangge233 / #299 )</li>
+                        <li>复活了内存优化功能 (PR @Hill23333 / #292 )</li>
+                        <li>实验性：允许重置版本以补全部分 Libraries (PR @Pigeon0v0 / #287 )</li>
+                    </ul>
+
+                    <h3>优化</h3>
+                    <ul>
+                        <li>对排序算法进行了优化，现在 Mod 管理不卡了 (@JustQiyi / #285 ; PR @tangge233 / #286 )</li>
+                        <li>自动安装修改现在会同时显示版本的修改前信息和修改后信息 (PR @Pigeon0v0 / #287 )</li>
+                    </ul>
+
+                    <h3>Bug 修复</h3>
+                    <ul>
+                        <li>意外地将 Quilt Mod 更新为 NeoForge 版本 (@Lithum-12 / #296 ; PR @3gf8jv4dv / #298 )</li>
+                        <li>在关闭文件校验选项开启时也始终校验 Libraries (PR @Pigeon0v0 / #310 )</li>
+                        <li>在更新通道切换后误认为不是最新版本 (PR @tangge233 / #343 )</li>
+                        <li>在浅色模式下实时日志的部分颜色显示不正确 (PR @tangge233 / #335 )</li>
+                        <li>由于合并上游导致的默认选择高性能 Java 选项丢失 (PR @tangge233 / d580e42)</li>
+                    </ul>
+
+                    <h3>技术性更改</h3>
+                    <ul>
+                        <li>修复更新服务器的链接错误 (PR @Pigeon0v0 / 5d7ac11 )</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="version-card" data-version="2.10.3" data-type="stable">
+            <div class="version-header">
+                <div class="version-info">
                     <div class="version-name">2.10.3</div>
                     <span class="version-tag stable">稳定版</span>
+                    <div class="version-summary">基于主线版本 2.8.13，新增更新通道机制</div>
                 </div>
-                <div class="version-date">2025-02-16</div>
+                <div class="version-meta">
+                    <div class="version-date">2025-02-16</div>
+                    <button class="expand-btn" data-expanded="false">
+                        <span class="expand-text">查看详情</span>
+                        <svg class="expand-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
+            
+            <div class="version-downloads">
+                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.3/PCL_CE.exe" class="download-btn primary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+                    </svg>
+                    下载 x64
+                </a>
+                <a href="https://download.PCLce.dpdns.org/https://github.com/PCL-Community/PCL-CE/releases/download/2.10.3/PCL_CE_ARM64.exe" class="download-btn secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path>
+                    </svg>
+                    下载 ARM64
+                </a>
+            </div>
+
+            <div class="changelog" style="display: none;">
+                <div class="changelog-content">
             <div class="changelog">
                 <li>此版本基于主线版本 2.8.13</li>
 
