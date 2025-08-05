@@ -1,4 +1,4 @@
-const BUILD_TIME = '2025.8.4';
+const BUILD_TIME = '2025.8.5';
 
 function updateBuildTime() {
     const elements = document.querySelectorAll('.build-time');
