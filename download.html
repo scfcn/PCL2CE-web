@@ -5,195 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>下载 PCL 社区版 | 开源免费的Minecraft启动器</title>
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/download.css">
     <link rel="icon" href="./img/logo.ico">
     <script src="./js/index.js"></script>
     <script src="./js/buildTime.js"></script>
     <script src="./js/i18n.js"></script>
     <script src="./js/pjax.js"></script>
-    <style>
-        /* 下载页面专用样式 */
-        :root {
-            --preview-primary: #f1c40f;
-            --preview-secondary: #f39c12;
-            --glass-dark: rgba(16, 24, 39, 0.9);
-            --glass-light: rgba(255, 255, 255, 0.15);
-        }
-        .download-container {
-            margin-top: 100px;
-            padding: 2rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3rem;
-        }
-        .version-card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur-strong);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 2rem;
-            width: 100%;
-            max-width: 800px;
-            transition: var(--transition);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-
-        .version-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.05) 100%);
-            pointer-events: none;
-            border-radius: 1rem;
-        }
-
-        .version-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* 移除默认边框颜色 */
-        .version-card:first-child {
-            border-color: transparent;
-        }
-
-        .version-card:first-child:hover {
-            border-color: var(--preview-primary);
-            box-shadow: 0 4px 12px rgba(241, 196, 15, 0.2);
-        }
-
-        .version-card:last-child {
-            border-color: transparent;
-        }
-
-        .version-card:last-child:hover {
-            border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
-        }
-        .version-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .version-name {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-        .version-date {
-            color: rgba(255, 255, 255, 0.6);
-        }
-        .version-tag {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
-        .version-tag.stable {
-            background: rgba(33, 150, 243, 0.2);
-            color: #2196F3;
-            border: 1px solid rgba(33, 150, 243, 0.3);
-        }
-        .version-tag.preview {
-            background: rgba(241, 196, 15, 0.2);
-            color: var(--preview-primary);
-            border: 1px solid rgba(241, 196, 15, 0.3);
-        }
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--primary);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        .download-btn:hover {
-            transform: translateY(-2px);
-            background: var(--secondary);
-            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
-        }
-        .preview-btn {
-            background: var(--preview-primary) !important;
-        }
-        .preview-btn:hover {
-            background: var(--preview-secondary) !important;
-            box-shadow: 0 4px 12px rgba(241, 196, 15, 0.3) !important;
-        }
-        .changelog {
-            margin-top: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        .changelog ul {
-            list-style: none;
-            margin-top: 0.5rem;
-        }
-        .changelog li {
-            margin: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        .changelog li::before {
-            content: "•";
-            color: var(--primary);
-            position: absolute;
-            left: 0;
-        }
-
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem;
-            }
-            .navbar h1 {
-                font-size: 1.4rem;
-            }
-            .logo-hover {
-                width: 36px;
-                height: 36px;
-            }
-            .version-card {
-                padding: 1.5rem;
-            }
-        }
-        [data-theme="light"] {
-            background: var(--gradient-light);
-            color: #1e293b;
-        }
-        [data-theme="light"] .navbar {
-            background: rgba(255, 255, 255, 0.9);
-            border-color: rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        [data-theme="light"] .version-card {
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-        [data-theme="light"] .github-btn {
-            background: rgba(0, 0, 0, 0.05);
-            color: #1e293b;
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-        [data-theme="light"] .github-btn:hover {
-            background: rgba(0, 0, 0, 0.1);
-        }
-        [data-theme="light"] .version-date,
-        [data-theme="light"] .changelog {
-            color: #475569;
-        }
-
-    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -215,11 +32,7 @@
                         <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
                     </svg>
                 </a>
-                <div class="language-selector">
-                    <a href="#" class="lang-switch" data-lang="zh" data-i18n="footer.language">简体中文</a>
-                    <span> | </span>
-                    <a href="#" class="lang-switch" data-lang="en" data-i18n="footer.language.switch">English</a>
-                </div>
+
             </div>
             
             <button class="menu-toggle" id="menuToggle">
@@ -540,35 +353,12 @@
                         </a>
                     </p>
                 </div>
-                <div class="language-selector">
-                    <a href="#" class="footer-link lang-switch" data-lang="zh" data-i18n="footer.language">简体中文</a>
-                    <span class="separator">|</span>
-                    <a href="#" class="footer-link lang-switch" data-lang="en" data-i18n="footer.language.switch">English</a>
+                <div class="copyright-info">
+                    <p>© PCL Community 2025-<span id="current-year"></span> 版权所有</p>
+                    <p>"Minecraft" 以及 "我的世界" 为美国微软公司的商标。PCLCE 和本网站与美国微软公司之间没有从属关系。</p>
                 </div>
             </div>
         </div>
     </footer>
 </body>
 </html>
-<style>
-.changelog-image {
-            margin: 1rem 0;
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-
-        .changelog-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .changelog-image img:hover {
-            transform: scale(1.02);
-        }
-
-        [data-theme="light"] .changelog-image {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-</style>

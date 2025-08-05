@@ -10,43 +10,19 @@
     <script src="./js/buildTime.js"></script>
     <script src="./js/i18n.js"></script>
     <script src="./js/pjax.js"></script>
-    <style>
-        .btn-primary {
-            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%) !important;
-            color: #1a1a1a !important;
-            border: 2px solid #ffffff !important;
-        }
-        
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%) !important;
-            color: #1a1a1a !important;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline {
-            background: transparent !important;
-            color: #ffffff !important;
-            border: 2px solid #ffffff !important;
-        }
-        
-        .btn-outline:hover {
-            background: #ffffff !important;
-            color: #1a1a1a !important;
-        }
-    </style>
 </head>
 
 <body>
-    <nav class="navbar">
+    <nav class="navbar animate-slide-down">
         <div class="nav-container">
-            <div class="nav-brand">
+            <div class="nav-brand animate-fade-in animate-delay-1">
                 <a href="#home" class="brand-link">
                     <img src="./img/logo.ico" alt="PCL Logo" class="logo">
                     <span class="brand-text" data-i18n="brand.name">PCL 社区版</span>
                 </a>
             </div>
             
-            <div class="nav-menu" id="navMenu">
+            <div class="nav-menu animate-fade-in animate-delay-2" id="navMenu">
                 <a href="#home" class="nav-link" data-i18n="nav.home">首页</a>
                 <a href="#features" class="nav-link" data-i18n="nav.features">功能特性</a>
                 <a href="#download" class="nav-link" data-i18n="nav.download">下载</a>
@@ -56,14 +32,10 @@
                         <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
                     </svg>
                 </a>
-                <div class="language-selector">
-                    <a href="#" class="lang-switch" data-lang="zh" data-i18n="footer.language">简体中文</a>
-                    <span> | </span>
-                    <a href="#" class="lang-switch" data-lang="en" data-i18n="footer.language.switch">English</a>
-                </div>
+
             </div>
             
-            <button class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle animate-fade-in animate-delay-3" id="menuToggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -74,16 +46,16 @@
     <main id="main-content">
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-text">
-                    <h1 class="hero-title">
+            <div class="hero-text animate-slide-left">
+                    <h1 class="hero-title animate-fade-in">
                         <span class="title-main" data-i18n="hero.title">PCL 社区版</span>
                         <span class="title-sub" data-i18n="hero.subtitle">开源免费的 Minecraft 启动器</span>
                     </h1>
-                    <p class="hero-description" data-i18n="hero.description">
+                    <p class="hero-description animate-fade-in animate-delay-1" data-i18n="hero.description">
                         基于龙腾猫跃 PCL2 构建的社区版本，提供更强大的功能和更好的用户体验。
                         支持智能崩溃分析、多文件夹管理、直接下载光影和材质包等特色功能。
                     </p>
-                <div class="hero-buttons">
+                <div class="hero-buttons animate-slide-up animate-delay-2">
                     <a href="./dl.html" class="btn btn-primary">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -101,23 +73,23 @@
                         <span data-i18n="hero.history">历史版本</span>
                     </a>
                 </div>
-                <div class="hero-stats">
-                    <div class="stat">
+                <div class="hero-stats animate-fade-in animate-delay-3">
+                    <div class="stat animate-scale-in animate-delay-4">
                         <span class="stat-number">10K+</span>
                         <span class="stat-label" data-i18n="stats.users">活跃用户</span>
                     </div>
-                    <div class="stat">
+                    <div class="stat animate-scale-in animate-delay-5">
                         <span class="stat-number">100%</span>
                         <span class="stat-label" data-i18n="stats.opensource">开源免费</span>
                     </div>
-                    <div class="stat">
+                    <div class="stat animate-scale-in animate-delay-6">
                         <span class="stat-number">24/7</span>
                         <span class="stat-label" data-i18n="stats.community">社区支持</span>
                     </div>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-image-container">
+            <div class="hero-visual animate-slide-right animate-delay-1">
+                <div class="hero-image-container animate-scale-in animate-delay-2" data-cursor-effect>
                     <img src="./img/f1.png" alt="PCL 界面预览" class="hero-image">
                     <div class="image-overlay"></div>
                 </div>
@@ -125,13 +97,13 @@
         </div>
     </section>
 
-    <section class="demo-section">
+    <section class="demo-section animate-on-scroll">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-fade-in">
                 <h2 data-i18n="demo.title">PCL 社区版演示视频</h2>
                 <p data-i18n="demo.description">观看视频了解 PCL 社区版的强大功能</p>
             </div>
-            <div class="video-container">
+            <div class="video-container animate-scale-in animate-delay-1">
                 <iframe 
                     id="bili-video"
                     src="https://player.bilibili.com/player.html?aid=113865304048458&bvid=BV1w5wheQEAy&cid=28195815657&p=1&autoplay=0&mobi=1&high_quality=1&as_wide=1&danmaku=0&isOutside=true&noReffer=true"
@@ -144,14 +116,14 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="features-section">
+    <section id="features" class="features-section animate-on-scroll">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-fade-in">
                 <h2 data-i18n="features.title">核心功能</h2>
                 <p data-i18n="features.description">为 Minecraft 玩家量身打造的专业启动器</p>
             </div>
             <div class="features-grid">
-                <div class="feature-card">
+                <div class="feature-card animate-slide-up animate-delay-1">
                     <div class="feature-icon">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
@@ -165,7 +137,7 @@
                     </ul>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card animate-slide-up animate-delay-2">
                     <div class="feature-icon">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
@@ -179,7 +151,7 @@
                     </ul>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card animate-slide-up animate-delay-3">
                     <div class="feature-icon">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -195,7 +167,7 @@
                     </ul>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card animate-slide-up animate-delay-4">
                     <div class="feature-icon">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -210,7 +182,7 @@
                     </ul>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card animate-slide-up animate-delay-5">
                     <div class="feature-icon">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polygon points="12 2 2 7 12 12 22 7 12 2"/>
@@ -226,7 +198,7 @@
                     </ul>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card animate-slide-up animate-delay-6">
                     <div class="feature-icon">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
@@ -244,18 +216,18 @@
         </div>
     </section>
 
-    <section id="screenshots" class="screenshots-section">
+    <section id="screenshots" class="screenshots-section animate-on-scroll">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header animate-fade-in">
                 <h2 data-i18n="screenshots.title">界面预览</h2>
                 <p data-i18n="screenshots.description">直观了解 PCL 社区版的界面设计和功能布局</p>
             </div>
             
-            <div class="screenshot-row">
-                <div class="screenshot-image">
+            <div class="screenshot-row animate-slide-left">
+                <div class="screenshot-image animate-scale-in animate-delay-1">
                     <img src="./img/x1.png" alt="主界面" loading="lazy">
                 </div>
-                <div class="screenshot-content">
+                <div class="screenshot-content animate-slide-right animate-delay-2">
                     <h3 data-i18n="screenshots.main.title">主界面</h3>
                     <p data-i18n="screenshots.main.description">简洁直观的主界面设计，所有功能一目了然。支持深色主题切换，</p>
                     <ul class="feature-highlights">
@@ -265,8 +237,8 @@
                 </div>
             </div>
             
-            <div class="screenshot-row reverse">
-                <div class="screenshot-content">
+            <div class="screenshot-row reverse animate-slide-right">
+                <div class="screenshot-content animate-slide-left animate-delay-1">
                     <h3 data-i18n="screenshots.version.title">版本管理</h3>
                     <p data-i18n="screenshots.version.description">强大的版本管理功能，支持多个 Minecraft 版本同时管理。自动下载和安装，版本切换只需一键操作。支持快照版本、正式版本以及各种模组版本。</p>
                     <ul class="feature-highlights">
@@ -275,16 +247,16 @@
                         <li data-i18n="screenshots.version.item3">一键版本切换</li>
                     </ul>
                 </div>
-                <div class="screenshot-image">
+                <div class="screenshot-image animate-scale-in animate-delay-2">
                     <img src="./img/x2.png" alt="版本管理" loading="lazy">
                 </div>
             </div>
 
-            <div class="screenshot-row">
-                <div class="screenshot-image">
+            <div class="screenshot-row animate-slide-left">
+                <div class="screenshot-image animate-scale-in animate-delay-1">
                     <img src="./img/x3.png" alt="模组管理" loading="lazy">
                 </div>
-                <div class="screenshot-content">
+                <div class="screenshot-content animate-slide-right animate-delay-2">
                     <h3 data-i18n="screenshots.mods.title">模组管理</h3>
                     <p data-i18n="screenshots.mods.description">便捷的模组安装和管理系统，支持从多个来源下载模组。提供模组搜索功能，让您轻松找到心仪的模组。</p>
                     <ul class="feature-highlights">
@@ -297,13 +269,13 @@
         </div>
     </section>
 
-    <section id="download" class="download-section">
+    <section id="download" class="download-section animate-on-scroll">
         <div class="container">
             <div class="download-content">
-                <div class="download-text">
-                    <h2 data-i18n="download.title">立即下载</h2>
-                    <p data-i18n="download.description">开始你的 Minecraft 之旅，体验最好用的启动器</p>
-                    <div class="download-buttons">
+                <div class="download-text animate-slide-left">
+                    <h2 data-i18n="download.title" class="animate-fade-in">立即下载</h2>
+                    <p data-i18n="download.description" class="animate-fade-in animate-delay-1">开始你的 Minecraft 之旅，体验最好用的启动器</p>
+                    <div class="download-buttons animate-slide-up animate-delay-2">
                         <a href="./dl.html" class="btn btn-primary btn-large">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -318,8 +290,8 @@
                     </div>
 
                 </div>
-                <div class="download-visual">
-                    <div class="download-card">
+                <div class="download-visual animate-slide-right animate-delay-1">
+                    <div class="download-card animate-scale-in animate-delay-3">
                         <div class="card-header">
                             <img src="./img/logo.ico" alt="PCL Logo" class="card-logo">
                             <div class="card-title">
@@ -338,16 +310,16 @@
         </div>
     </section>
 
-    <section id="about" class="about-section">
+    <section id="about" class="about-section animate-on-scroll">
         <div class="container">
             <div class="about-content">
-                <div class="about-text">
-                    <div class="section-header">
+                <div class="about-text animate-slide-left">
+                    <div class="section-header animate-fade-in">
                         <h2 data-i18n="about.title">关于 PCL 社区</h2>
                         <p data-i18n="about.description">非官方的 PCL 社区玩家组织，不代表开发者龙腾猫跃和 PCL 官方。</p>
                     </div>
-                    <div class="about-stats">
-                        <div class="stat-item">
+                    <div class="about-stats animate-slide-up animate-delay-1">
+                        <div class="stat-item animate-fade-in animate-delay-2">
                             <div class="stat-icon">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M9 11H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h4l3 3V8l-3 3z"/>
@@ -360,7 +332,7 @@
                                 <p data-i18n="about.stat1.description">定期发布新功能和修复</p>
                             </div>
                         </div>
-                        <div class="stat-item">
+                        <div class="stat-item animate-fade-in animate-delay-3">
                             <div class="stat-icon">
                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -373,8 +345,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="about-visual">
-                    <div class="about-image">
+                <div class="about-visual animate-slide-right animate-delay-1">
+                    <div class="about-image animate-scale-in animate-delay-2">
                         <img src="./img/pclce.png" alt="PCL Community" loading="lazy">
                     </div>
                 </div>
@@ -383,10 +355,10 @@
     </section>
     </main>
 
-    <footer class="main-footer">
+    <footer class="main-footer animate-on-scroll">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
+            <div class="footer-content animate-fade-in">
+                <div class="footer-section animate-slide-up animate-delay-1">
                     <div class="footer-brand">
                         <img src="./img/logo.ico" alt="PCL Logo" class="footer-logo">
                         <div class="brand-info">
@@ -399,7 +371,7 @@
                     </p>
                 </div>
                 
-                <div class="footer-section">
+                <div class="footer-section animate-slide-up animate-delay-2">
                     <h4 data-i18n="footer.quicklinks">快速链接</h4>
                     <ul class="footer-links">
                         <li><a href="#home" data-i18n="footer.home">首页</a></li>
@@ -409,7 +381,7 @@
                     </ul>
                 </div>
                 
-                <div class="footer-section">
+                <div class="footer-section animate-slide-up animate-delay-3">
                     <h4 data-i18n="footer.resources">资源下载</h4>
                     <ul class="footer-links">
                         <li><a href="./dl.html" data-i18n="footer.latest">最新版本</a></li>
@@ -418,7 +390,7 @@
                     </ul>
                 </div>
                 
-                <div class="footer-section">
+                <div class="footer-section animate-slide-up animate-delay-4">
                     <h4 data-i18n="footer.community">社区</h4>
                     <ul class="footer-links">
                         <li><a href="https://github.com/PCL-Community/PCL-CE" target="_blank">GitHub</a></li>
@@ -428,7 +400,7 @@
                 </div>
             </div>
             
-            <div class="footer-bottom">
+            <div class="footer-bottom animate-fade-in animate-delay-5">
                 <div class="footer-info">
                     <p>
                         <span data-i18n="footer.built_by">网站由</span> <a href="https://github.com/fishcpy" target="_blank" class="footer-link">fishcpy</a> <span data-i18n="footer.built">构建</span>
@@ -441,10 +413,9 @@
                         </a>
                     </p>
                 </div>
-                <div class="language-selector">
-                    <a href="#" class="footer-link lang-switch" data-lang="zh" data-i18n="footer.language">简体中文</a>
-                    <span class="separator">|</span>
-                    <a href="#" class="footer-link lang-switch" data-lang="en" data-i18n="footer.language.switch">English</a>
+                <div class="copyright-info">
+                    <p>© PCL Community 2025-<span id="current-year"></span> 版权所有</p>
+                    <p>"Minecraft" 以及 "我的世界" 为美国微软公司的商标。PCLCE 和本网站与美国微软公司之间没有从属关系。</p>
                 </div>
             </div>
         </div>
