@@ -68,9 +68,13 @@ jobs:
           # 创建或切换到pages分支
           git checkout -B pages
           
+          # 删除README和LICENSE文件
+          rm -f README.md README_EN.md LICENSE.txt
+          echo "Removed README.md, README_EN.md, and LICENSE.txt from pages branch"
+          
           # 添加并提交更改
-          git add js/buildTime.js
-          git commit -m "🤖 Auto update build time to $BUILD_TIME"
+          git add -A
+          git commit -m "🤖 Auto update build time to $BUILD_TIME and remove docs"
           
           # 推送到pages分支
           git push origin pages --force
