@@ -3,50 +3,43 @@ name: Update Build Time
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
   workflow_dispatch:
 
 jobs:
   update-build-time:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        ref: ${{ github.head_ref || github.ref }}
         
     - name: Set up timezone
       run: |
         sudo timedatectl set-timezone Asia/Shanghai
         
-    - name: Update build time
+    - name: Update build time and commit
       run: |
         # 获取当前日期时间
         BUILD_TIME=$(date '+%Y.%-m.%-d %H:%M:%S')
-        echo "Current build time: $BUILD_TIME"
+        echo "Updating build time to: $BUILD_TIME"
         
         # 更新 buildTime.js 文件
         sed -i "s/const BUILD_TIME = '.*';/const BUILD_TIME = '$BUILD_TIME';/" js/buildTime.js
         
-        # 检查文件是否被修改
-        if git diff --quiet js/buildTime.js; then
-          echo "No changes to build time"
-        else
-          echo "Build time updated to: $BUILD_TIME"
-          cat js/buildTime.js | head -1
-        fi
-        
-    - name: Commit changes
-      run: |
+        # 配置git
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
+        # 检查是否有更改并提交
         if ! git diff --quiet js/buildTime.js; then
           git add js/buildTime.js
-          git commit -m "🤖 Auto update build time to $(date '+%Y.%-m.%-d %H:%M:%S')"
+          git commit -m "🤖 Auto update build time to $BUILD_TIME"
           git push
+          echo "Build time updated and committed: $BUILD_TIME"
         else
-          echo "No changes to commit"
+          echo "No changes to build time"
         fi
