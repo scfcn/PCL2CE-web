@@ -1,4 +1,14 @@
 /* 下载页面专用样式 */
+
+/* 字体定义 */
+@font-face {
+    font-family: '江城斜黑体';
+    src: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/0cdb77540e2da3e9/江城斜黑体 900W (1).woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --preview-primary: #f1c40f;
     --preview-secondary: #f39c12;
@@ -71,7 +81,9 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .version-name {
+    font-family: '江城斜黑体', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 1.5rem;
+    font-weight: 900;
     color: var(--primary);
 }
 .version-date {
