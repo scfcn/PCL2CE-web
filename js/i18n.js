@@ -187,6 +187,8 @@ class I18n {
                 'dl.history.title': '历史版本下载',
                 'dl.history.desc': '如果您需要 PCL 社区版的旧版本，可以从以下链接下载：',
                 'dl.history.link': '历史版本',
+                'dl.privacy.notice': '如果您点击下方任意下载并运行程序，代表同意我们的隐私协议，隐私协议请点击下方链接查看',
+                'dl.privacy.link': 'https://www.pclc.cc/privacy/',
                 
                 // 404页面
                 '404.title': '页面未找到',
@@ -356,6 +358,8 @@ class I18n {
                 'dl.history.title': 'Historical Versions Download',
                 'dl.history.desc': 'If you need older versions of PCL Community Edition, you can download from the following links:',
                 'dl.history.link': 'Historical Versions',
+                'dl.privacy.notice': 'By clicking any download link below and running the program, you agree to our privacy policy. Please click the link below to view the privacy policy',
+                'dl.privacy.link': 'https://www.pclc.cc/privacy/',
                 
                 // 404页面
                 '404.title': 'Page Not Found',
