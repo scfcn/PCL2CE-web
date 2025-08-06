@@ -1,3 +1,12 @@
+/* 字体定义 */
+@font-face {
+    font-family: '江城斜黑体';
+    src: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/0cdb77540e2da3e9/江城斜黑体 900W (1).woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --primary: #3498db;
     --primary-dark: #2980b9;
@@ -255,8 +264,9 @@ p {
 }
 
 .brand-text {
+    font-family: '江城斜黑体', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 900;
     transition: var(--transition);
 }
 
@@ -473,8 +483,9 @@ p {
 
 .title-main {
     display: block;
+    font-family: '江城斜黑体', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 4rem;
-    font-weight: 700;
+    font-weight: 900;
     background: linear-gradient(135deg, var(--white) 0%, var(--primary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -567,7 +578,9 @@ p {
 }
 
 .section-header h2 {
+    font-family: '江城斜黑体', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 3rem;
+    font-weight: 900;
     margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--white) 0%, var(--primary) 100%);
     -webkit-background-clip: text;
@@ -694,7 +707,9 @@ p {
 }
 
 .feature-card h3 {
+    font-family: '江城斜黑体', 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 1.5rem;
+    font-weight: 900;
     margin-bottom: 1rem;
     color: var(--white);
 }
@@ -1032,6 +1047,8 @@ p {
 .brand-info h3 {
     color: var(--white);
     margin-bottom: 0.25rem;
+    font-family: '江城斜黑体', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    font-weight: 900;
 }
 
 .brand-info p {
@@ -1075,6 +1092,8 @@ p {
     margin: 0.25rem 0;
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.9rem;
+    font-family: '江城斜黑体', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    font-weight: 900;
 }
 
 .footer-link {
@@ -1177,11 +1196,14 @@ p {
     font-size: 0.85rem;
     text-align: right;
     line-height: 1.4;
+    font-family: '江城斜黑体', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    font-weight: 900;
 }
 
 .copyright-info p:first-child {
-    font-weight: 500;
+    font-weight: 900;
     color: rgba(255, 255, 255, 0.8);
+    font-family: '江城斜黑体', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
 }
 
 /* 大屏幕优化 */
@@ -2364,10 +2386,14 @@ html {
 /* 浅色主题版权信息样式 */
 [data-theme="light"] .copyright-info p {
     color: rgba(0, 0, 0, 0.6);
+    font-family: '江城斜黑体', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    font-weight: 900;
 }
 
 [data-theme="light"] .copyright-info p:first-child {
     color: rgba(0, 0, 0, 0.8);
+    font-family: '江城斜黑体', 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    font-weight: 900;
 }
 
 /* 浅色主题移动端菜单样式 */
