@@ -68,9 +68,10 @@ jobs:
           # 创建或切换到pages分支
           git checkout -B pages
           
-          # 删除README和LICENSE文件
+          # 删除README和LICENSE文件以及.github文件夹
           rm -f README.md README_EN.md LICENSE.txt
-          echo "Removed README.md, README_EN.md, and LICENSE.txt from pages branch"
+          rm -rf .github
+          echo "Removed README.md, README_EN.md, LICENSE.txt, and .github folder from pages branch"
           
           # 添加并提交更改
           git add -A
