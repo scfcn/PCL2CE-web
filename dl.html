@@ -10,6 +10,16 @@
     <script src="./js/i18n.js"></script>
     <script src="./js/pjax.js"></script>
     <link rel="icon" href="./img/logo.ico">
+    <script>
+        // 只在非本地环境加载统计代码
+        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+            const script = document.createElement('script');
+            script.defer = true;
+            script.src = 'https://cloud.umami.is/script.js';
+            script.setAttribute('data-website-id', '0b1c7db6-1635-462d-b6f0-19632df1f00d');
+            document.head.appendChild(script);
+        }
+    </script>
 </head>
 
 <body>
@@ -227,6 +237,8 @@
                         <span data-i18n="footer.built_by">网站由</span> <a href="https://github.com/fishcpy" target="_blank" class="footer-link">fishcpy</a> <span data-i18n="footer.built">构建</span>
                         <span class="separator">|</span>
                         <span data-i18n="footer.build_time">构建时间:</span> <span class="build-time"></span>
+                        <span class="separator">|</span>
+                        <a href="https://cloud.umami.is/share/welKllA5pbVvcMHz/pclce-web.demo.fis.ink" target="_blank" class="footer-link" data-i18n="footer.analytics">访问数据</a>
                     </p>
                     <p>
                         <a href="https://github.com/Hex-Dragon/PCL2" target="_blank" class="footer-link" data-i18n="footer.based_on">
