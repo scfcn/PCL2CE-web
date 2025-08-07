@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://pclce-web.demo.fis.ink/sitemap.xml
+Sitemap: https://pclce.xnet.ren/sitemap.xml
 
 # Disallow crawling of certain file types
 Disallow: /*.js$
