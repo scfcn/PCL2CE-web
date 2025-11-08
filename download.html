@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>下载 PCL 社区版 | 开源免费的Minecraft启动器</title>
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/download.css">
-    <link rel="icon" href="./img/logo.ico">
-    <script src="./js/index.js"></script>
-    <script src="./js/buildTime.js"></script>
-    <script src="./js/i18n.js"></script>
-    <script src="./js/pjax.js"></script>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/download.css">
+    <link rel="icon" href="/img/logo.ico">
+    <script src="/js/index.js"></script>
+    <script src="/js/buildTime.js"></script>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/pjax.js"></script>
     <script>
         // 只在非本地环境加载统计代码
         if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
             const script = document.createElement('script');
             script.defer = true;
             script.src = 'https://um.qxzhan.cn/script.js';
-            script.setAttribute('data-website-id', 'c180cd0a-2d93-4152-b9e4-3f96a5121300');
+            script.setAttribute('data-website-id', '0e6e3932-ac75-4031-8e37-99d5d8e05352');
             document.head.appendChild(script);
         }
     </script>
@@ -27,7 +27,7 @@
         <div class="nav-container">
             <div class="nav-brand">
                 <a href="/" class="brand-link">
-                    <img src="./img/logo.ico" alt="PCL Logo" class="logo">
+                    <img src="/img/logo.ico" alt="PCL Logo" class="logo">
                     <span class="brand-text" data-i18n="nav.brand">PCL 社区版</span>
                 </a>
             </div>
@@ -35,7 +35,7 @@
             <div class="nav-menu" id="navMenu">
                 <a href="/" class="nav-link" data-i18n="nav.home">首页</a>
                 <a href="/#features" class="nav-link" data-i18n="nav.features">功能特性</a>
-                <a href="./dl.html" class="nav-link" data-i18n="nav.download">下载</a>
+                <a href="/dl.html" class="nav-link" data-i18n="nav.download">下载</a>
                 <a href="/#about" class="nav-link" data-i18n="nav.about">关于</a>
                 <!-- 语言切换 -->
                 <div class="language-selector">
@@ -204,9 +204,9 @@
             <ul>
                 <li> 添加了 Cleanroom 自动安装及相关支持</li>
                 <div class="changelog-image">
-                    <img src="./img/releases/2.10.4/2.10.4-1.png" alt="2.10.4 更新预览" loading="lazy">
+                    <img src="/img/releases/2.10.4/2.10.4-1.png" alt="2.10.4 更新预览" loading="lazy">
                     <li>资源包、光影包的管理实现与 Mod 管理统一，现已支持更新等操作</li>
-                    <img src="./img/releases/2.10.4/2.10.4-2.png" alt="2.10.4 更新预览" loading="lazy">
+                    <img src="/img/releases/2.10.4/2.10.4-2.png" alt="2.10.4 更新预览" loading="lazy">
                 </div>
             </ul>
 
@@ -276,9 +276,9 @@
                     <li> 本体更新终于有国内服务器了！</li>
                     <li> 新增了更新通道机制，你可以选择 Fast Ring 以获取新功能预览，但这些版本可能有些不稳定！</li>
                     <div class="changelog-image">
-                        <img src="./img/releases/2.10.3/2.10.3-1.png" alt="2.10.4 更新预览" loading="lazy">
+                        <img src="/img/releases/2.10.3/2.10.3-1.png" alt="2.10.4 更新预览" loading="lazy">
                         <li>资源包、光影包的管理实现与 Mod 管理统一，现已支持更新等操作</li>
-                        <img src="./img/releases/2.10.3/2.10.3-2.png" alt="2.10.4 更新预览" loading="lazy">
+                        <img src="/img/releases/2.10.3/2.10.3-2.png" alt="2.10.4 更新预览" loading="lazy">
                     </div>
                 </ul>
 
@@ -345,7 +345,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-brand">
-                        <img src="./img/logo.ico" alt="PCL Logo" class="footer-logo">
+                        <img src="/img/logo.ico" alt="PCL Logo" class="footer-logo">
                         <div class="brand-info">
                             <h3 data-i18n="footer.brand">PCL 社区版</h3>
                             <p data-i18n="footer.tagline">开源免费的 Minecraft 启动器</p>
@@ -369,8 +369,8 @@
                 <div class="footer-section">
                     <h4 data-i18n="footer.resources">资源下载</h4>
                     <ul class="footer-links">
-                        <li><a href="./dl.html" data-i18n="footer.latest">最新版本</a></li>
-                        <li><a href="./download.html" data-i18n="footer.history">历史版本</a></li>
+                        <li><a href="/dl.html" data-i18n="footer.latest">最新版本</a></li>
+                        <li><a href="/download.html" data-i18n="footer.history">历史版本</a></li>
                         <li><a href="https://github.com/PCL-Community/PCL2-CE" target="_blank" data-i18n="footer.source">源代码</a></li>
                     </ul>
                 </div>

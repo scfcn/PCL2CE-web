@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 Not Found | PCL 社区版</title>
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="icon" href="./img/logo.ico">
-    <script src="./js/index.js"></script>
-    <script src="./js/i18n.js"></script>
-    <script src="./js/buildTime.js"></script>
-    <script src="./js/pjax.js"></script>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="icon" href="/img/logo.ico">
+    <script src="/js/index.js"></script>
+    <script src="/js/i18n.js"></script>
+    <script src="/js/buildTime.js"></script>
+    <script src="/js/pjax.js"></script>
     <script>
         // 只在非本地环境加载统计代码
         if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
             const script = document.createElement('script');
             script.defer = true;
             script.src = 'https://um.qxzhan.cn/script.js';
-            script.setAttribute('data-website-id', 'c180cd0a-2d93-4152-b9e4-3f96a5121300');
+            script.setAttribute('data-website-id', '0e6e3932-ac75-4031-8e37-99d5d8e05352');
             document.head.appendChild(script);
         }
     </script>
@@ -114,7 +114,7 @@
         <div class="nav-container">
             <div class="nav-brand">
                 <a href="/" class="brand-link">
-                    <img src="./img/logo.ico" alt="PCL Logo" class="logo">
+                    <img src="/img/logo.ico" alt="PCL Logo" class="logo">
                     <span class="brand-text" data-i18n="nav.brand">PCL 社区版</span>
                 </a>
             </div>
@@ -122,7 +122,7 @@
             <div class="nav-menu" id="navMenu">
                 <a href="/" class="nav-link" data-i18n="nav.home">首页</a>
                 <a href="/#features" class="nav-link" data-i18n="nav.features">功能特性</a>
-                <a href="./dl.html" class="nav-link" data-i18n="nav.download">下载</a>
+                <a href="/dl.html" class="nav-link" data-i18n="nav.download">下载</a>
                 <a href="/#about" class="nav-link" data-i18n="nav.about">关于</a>
                 <a href="https://github.com/PCL-Community/PCL-CE" target="_blank" class="nav-link github-link" title="GitHub">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -162,7 +162,7 @@
                         </svg>
                         返回首页
                     </a>
-                    <a href="./dl.html" class="btn btn-secondary" data-i18n="404.download">
+                    <a href="/dl.html" class="btn btn-secondary" data-i18n="404.download">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                             <polyline points="7 10 12 15 17 10"/>
@@ -182,7 +182,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-brand">
-                        <img src="./img/logo.ico" alt="PCL Logo" class="footer-logo">
+                        <img src="/img/logo.ico" alt="PCL Logo" class="footer-logo">
                         <div class="brand-info">
                             <h3>PCL 社区版</h3>
                             <p>开源免费的 Minecraft 启动器</p>
@@ -206,8 +206,8 @@
                 <div class="footer-section">
                     <h4>资源下载</h4>
                     <ul class="footer-links">
-                        <li><a href="./dl.html">最新版本</a></li>
-                        <li><a href="./download.html">历史版本</a></li>
+                        <li><a href="/dl.html">最新版本</a></li>
+                        <li><a href="/download.html">历史版本</a></li>
                         <li><a href="https://github.com/PCL-Community/PCL-CE" target="_blank">源代码</a></li>
                     </ul>
                 </div>
